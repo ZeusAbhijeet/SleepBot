@@ -12,8 +12,6 @@ class Info(commands.Cog):
 			colour=discord.Colour.blue())
 		embed.set_footer(text=f'Requested by {ctx.author}')
 		await ctx.send(embed=embed)
-		#await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
-
 
 def setup(client):
 	client.add_cog(Info(client))
