@@ -28,31 +28,30 @@ class Point(commands.Cog):
 				total_point[user[0]] += user[1]
 			else:
 				total_point[user[0]] = user[1]
-		if target != None:
+		if target != None :
 			if not (target.id in total_point):
 				total_point[target.id] = 0
-			embed = discord.Embed(title = f"User {target.name}'s points",
-				description="{} has {} points".format(target.name, total_point[target.id]),
-				colour=random.randint(0,0xffffff)
+			embed = discord.Embed(title = "User {}'s Points".format(target.name),
+				description = "{} has {} points since reset.".format(target.name,total_point[target.id]),
+				colour = random.randint(0,0xffffff)
 				)
-			await ctx.send(embed=embed)
+			await ctx.send(embed = embed)
 			return
 	
 		top_20 = 1
 		total_point = sorted(total_point.items(), key = lambda kv: kv[1])
 		total_point.reverse()
-		embed = discord.Embed(title = 'Point Leaderboard',
-			description = "Top Points Since Last Reset.",
+		embed = discord.Embed(title = "Point Leaderboard",
+			description = "Top Point Since Last Reset.",
 			colour = random.randint(0,0xffffff)
 			)
 		for user in total_point:
-			embed.add_field(name = "{} : {}".format(top_20, ctx.guild.get_member(user[0])), value = user[1])
+			embed.add_field(name = "{} : {}".format(top_20,ctx.guild.get_member(int(user[0]))), value = user[1])
 			top_20 += 1
-			if top_20 == 1:
+			if top_20 == 21:
 				break
-		await ctx.send(embed=embed)
-
+		await ctx.send(embed = embed)
 
 
 def setup(client):
-	client.add_cog(client)
+	client.add_cog(Point(client))

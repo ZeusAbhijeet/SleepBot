@@ -1,0 +1,5 @@
+CREATE TABLE channel_table (
+db_ID	        INTEGER      PRIMARY KEY AUTOINCREMENT,
+title		      VARCHAR(40)  NOT NULL,
+channel_ID	  INTEGER      NOT NULL
+);

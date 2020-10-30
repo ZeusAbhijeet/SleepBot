@@ -8,9 +8,6 @@ from dotenv import load_dotenv
 from datetime import datetime
 from datetime import date
 
-# Getting Channel ID for the log channels from .env file
-load_dotenv()
-LOG = os.getenv('LOG_ID')
 
 POINT = {}
 
@@ -18,6 +15,8 @@ POINT = {}
 conn = sqlite3.connect('Database.db')
 c = conn.cursor()
 
+c.execute("SELECT channel_ID FROM channel_table WHERE title='LOG';")
+LOG = c.fetchone()
 c.execute("SELECT user_id, points FROM point_table;")
 DB_POINT = c.fetchall()
 
@@ -29,7 +28,7 @@ async def Backup(client):
 	global POINT
 	global DB_POINT
 	while not client.is_closed():
-		await client.get_channel(LOG).send(f"Backup OK: '''{datetime.now}'''")
+		await client.get_channel(LOG).send(f"Backup OK: {datetime.now()}")
 		# Repeat every 1 hour
 		await asyncio.sleep(3600)
 		conn = sqlite3.connect('Database.db')
@@ -42,7 +41,7 @@ async def Backup(client):
 		# POINT BACKUP
 		for user in DB_POINT:
 			if user[0] in POINT:
-				c.execute("UPDATE point_table SET points = {} WHERE user_id = {};".format(POINT[user[0]]+user[1], user[0]))
+				c.execute("UPDATE point_table SET points = {} WHERE user_ID = {}".format(POINT[user[0]]+user[1],user[0]))
 		is_instance = False
 		for user in POINT:
 			for elm in DB_POINT:
@@ -50,7 +49,7 @@ async def Backup(client):
 					is_instance = True
 					break
 			if not is_instance:
-				c.execute("INSERT INTO point_table VALUES (NULL, {}, {};".format(user, POINT[user]))
+				c.execute("INSERT INTO point_table VALUES (NULL, {}, {});".format(user,POINT[user]))
 			is_instance = False
 		
 		conn.commit()
