@@ -1,17 +1,23 @@
+# Importing Libraries required for the bot to function
 import discord
 import os
-import random
+import sqlite3
 import asyncio
+# Import Util.py to get tasks
+import Util
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 from itertools import cycle
 from datetime import datetime
 
+# Getting Token from .env file
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+# Setting Prefix
 client = commands.Bot(command_prefix = '.s')
 
+#Startup routine
 @client.event
 async def on_ready():
 	print('Bot is ready.')
@@ -29,8 +35,13 @@ if __name__ == '__main__':
 			print(f'Loaded Cog {extension} successfully')
 		except Exception as error:
 			print(f'Failed to load Cog {extension}. Reason: {error}')
+	# For taking backup of DB
+	client.loop.create_task(Util.Backup(client))
 
-
+# The following commands will be used to load Cogs
+# They are locked behind a has_role check which requires the user to have the "SleepBot Admin" role
+# This can be changed to allow people having Administrator permissions by changing the check to
+# @commands.has_permissions(administrator=True)
 @client.command(name='load')
 @commands.has_role("SleepBot Admin")
 async def load(ctx, extension):
@@ -65,6 +76,8 @@ async def reload(ctx, extension):
 	except Exception as error:
 		await ctx.send(f'Failed to reload Cog {extension}. Reason: {error}')
 
+# Command to shut the bot down
+# Again requires user to have "SleepBot Admin" role which can also be changed
 @client.command(name='logout')
 @commands.has_role("SleepBot Admin")
 async def logout(ctx):

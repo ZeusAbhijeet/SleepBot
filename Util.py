@@ -2,16 +2,19 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
+# For Database related stuff
 import sqlite3
 from dotenv import load_dotenv
 from datetime import datetime
 from datetime import date
 
+# Getting Channel ID for the log channels from .env file
 load_dotenv()
 LOG = os.getenv('LOG_ID')
 
 POINT = {}
 
+# Open and connect to Database File
 conn = sqlite3.connect('Database.db')
 c = conn.cursor()
 
@@ -20,6 +23,7 @@ DB_POINT = c.fetchall()
 
 conn.close()
 
+# For Backup to Database
 async def Backup(client):
 	await client.wait_until_ready()
 	global POINT
