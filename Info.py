@@ -1,4 +1,5 @@
 import discord
+import random
 from discord.ext import commands
 
 class Info(commands.Cog):
@@ -9,7 +10,8 @@ class Info(commands.Cog):
 	async def ping(self, ctx):
 		embed=discord.Embed(title='Pong!', 
 			description=f'Ping = {round(self.client.latency * 1000)}ms', 
-			colour=discord.Colour.blue())
+			colour=random.randint(0,0xffffff)
+		)
 		embed.set_footer(text=f'Requested by {ctx.author}')
 		await ctx.send(embed=embed)
 

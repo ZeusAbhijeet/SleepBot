@@ -15,7 +15,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 # Setting Prefix
-client = commands.Bot(command_prefix = '.s')
+client = commands.Bot(command_prefix = '.s', case_insensitive=True)
 
 #Startup routine
 @client.event
@@ -28,7 +28,7 @@ async def on_ready():
 		print(f'Guild ID: {server.id}')
 
 if __name__ == '__main__':
-	extensions = {'Info'} #'Points, 'Mod', 'Util'
+	extensions = {'Info', 'Point'} #'Points, 'Mod', 'Util'
 	for extension in extensions:
 		try:
 			client.load_extension(extension)
@@ -81,7 +81,7 @@ async def reload(ctx, extension):
 @client.command(name='logout')
 @commands.has_role("SleepBot Admin")
 async def logout(ctx):
-	await ctx.send("Logging Out")
+	await ctx.send("<a:Loading:771266181943918602>Logging Out")
 	await client.logout()
 @logout.error
 async def logout_error(ctx, error):
