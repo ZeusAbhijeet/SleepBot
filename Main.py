@@ -29,7 +29,7 @@ async def on_ready():
 	await client.change_presence(activity=discord.Game("with points | .shelp"))
 
 if __name__ == '__main__':
-	extensions = {'Info', 'Point'} #'Points, 'Mod', 'Util'
+	extensions = {'Info', 'Point', 'Fun'} #'Points, 'Mod', 'Util'
 	for extension in extensions:
 		try:
 			client.load_extension(extension)
