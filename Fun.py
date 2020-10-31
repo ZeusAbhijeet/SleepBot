@@ -20,7 +20,7 @@ class Fun(commands.Cog):
 	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} is Hitting Everyone with the Ban Hammer!".format(ctx.author.name) if target == None else "{} is Slamming {} into the Oblivion with the Ban Hammer!".format(ctx.author.name, target.name)
 		description = "The Hammer has been Polished! Time to Ban!" if reason == "none" else "The Hammer has been Polished! Time to Ban!\n**Reason:** {}".format(reason)
-		url = 'https://cdn.discordapp.com/attachments/771081877414346772/771990909138501642/tenor.gif'
+		url = 'https://cdn.discordapp.com/attachments/755740543358861383/772007520532168715/banpower.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@ban.error
 	async def ban_error(self, ctx, error):
