@@ -29,8 +29,6 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-			
-			
 	
 	@commands.command(name='kick')
 	@commands.cooldown(1, 300, commands.BucketType.user)
@@ -44,14 +42,12 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-			
-			
-			
+	
 	@commands.command(name='shoot')
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def shoot(self, ctx, target : discord.Member = None, *, reason = "none"):
-		title = "{} just shot everyone !".format(ctx.author.name) if target == None else "{} is Shooting {} Out of the Party!".format(ctx.author.name, target.name)
-		description = "The gun's loaded! I tought U how to dodge!Right?" if reason == "none" else "C'mon I tought how to dodge !\n**Reason:** {}".format(reason)
+		title = "{} just shot everyone!".format(ctx.author.name) if target == None else "{} is Shooting {} Out of the Party!".format(ctx.author.name, target.name)
+		description = "The gun's loaded! I taught y'all how to dodge! Right?" if reason == "none" else "C'mon I taught you how to dodge!\n**Reason:** {}".format(reason)
 		url = 'https://cdn.discordapp.com/attachments/755740543358861383/772012691081527296/shooting.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@shoot.error
