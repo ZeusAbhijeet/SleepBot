@@ -18,8 +18,8 @@ class Fun(commands.Cog):
 	@commands.command(name='ban')
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
-		title = "{} is Flaming everyone, Dodge !!".format(ctx.author.name) if target == None else "{} is Flaming {} into the Oblivion with the Ban Fire!".format(ctx.author.name, target.name)
-		description = "The Fuel Has been Injected ! Time to Ban !" if reason == "none" else "The Fuel Has been Injected ! Time to Ban !\n**Reason:** {}".format(reason)
+		title = "{} is Flaming everyone, Dodge !!".format(ctx.author.name) if target == None else "{} is Flaming {} into the Oblivion with the Ban Flame!".format(ctx.author.name, target.name)
+		description = "The Fuel Has been Injected! Time to Ban!" if reason == "none" else "The Fuel Has been Injected! Time to Ban!\n**Reason:** {}".format(reason)
 		url = 'https://cdn.discordapp.com/attachments/755740543358861383/772007520532168715/banpower.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@ban.error
