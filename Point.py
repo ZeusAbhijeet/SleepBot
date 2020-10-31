@@ -46,7 +46,7 @@ class Point(commands.Cog):
 			colour = random.randint(0,0xffffff)
 			)
 		for user in total_point:
-			embed.add_field(name = "{} : {}".format(top_20,ctx.guild.get_member(int(user[0]))), value = user[1])
+			embed.add_field(name = "{} : {}".format(top_20,ctx.guild.get_member(user[0])), value = user[1])
 			top_20 += 1
 			if top_20 == 21:
 				break

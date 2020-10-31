@@ -28,16 +28,16 @@ async def Backup(client):
 	global POINT
 	global DB_POINT
 	while not client.is_closed():
-		await client.get_channel(LOG).send(f"Backup OK: {datetime.now()}")
+		await client.get_channel(LOG[0]).send(f"Backup OK: {datetime.now()}")
 		# Repeat every 1 hour
-		await asyncio.sleep(3600)
+		await asyncio.sleep(1800)
 		conn = sqlite3.connect('Database.db')
 		c = conn.cursor()
 
 		c.execute("SELECT user_id, points FROM point_table;")
 		DB_POINT = c.fetchall()
 
-		await client.get_channel(LOG).send(f"Performing Backup: ```{datetime.now()}```")
+		await client.get_channel(int(LOG[0])).send(f"Performing Backup: ```{datetime.now()}```")
 		# POINT BACKUP
 		for user in DB_POINT:
 			if user[0] in POINT:
@@ -52,6 +52,9 @@ async def Backup(client):
 				c.execute("INSERT INTO point_table VALUES (NULL, {}, {});".format(user,POINT[user]))
 			is_instance = False
 		
+		c.execute("SELECT user_ID, points FROM point_table;")
+		DB_POINT = c.fetchall()
+
 		conn.commit()
 		conn.close()
 

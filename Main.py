@@ -26,6 +26,7 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
+	await client.change_presence(activity=discord.Game("with points | .shelp"))
 
 if __name__ == '__main__':
 	extensions = {'Info', 'Point'} #'Points, 'Mod', 'Util'
