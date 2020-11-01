@@ -16,6 +16,7 @@ DISCORD_TOKEN=Your Token Here
 
 ## Credits
 This bot contains code from the following Repos:
+
 [Robobert](https://github.com/JTexpo/Robobert): For the Point.py, Util.py and SQL_CMDS
 
 Special Thanks to [JTexpo](https://github.com/JTexpo) for helping me make this bot and letting me use parts of his code.
