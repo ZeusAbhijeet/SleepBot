@@ -14,8 +14,12 @@ from datetime import datetime
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+# Adding Intents
+intents = discord.Intents.default()
+intents.members = True
+
 # Setting Prefix
-client = commands.Bot(command_prefix = '.s', case_insensitive=True)
+client = commands.Bot(command_prefix = '.s', case_insensitive=True, intents = intents)
 
 #Startup routine
 @client.event
