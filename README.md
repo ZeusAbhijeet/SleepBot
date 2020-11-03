@@ -4,7 +4,7 @@ Official Bot for the Clinify.in Discord Server written in Python using Discord.p
 Though this bot is intended to be used only on the Clinify.in Discord Server, you can self host it in your server to test it out. Installation guide down below.
 
 ## Dependancies
-This bot requires the Discord.py library which can be installed using pip package manager.
+This bot requires the Discord.py v1.5+ library which can be installed using pip package manager.
 
 ## How to host the bot
 1. Edit the i-channel_table.txt file in SQL_CMDS folder as required.
@@ -14,6 +14,9 @@ This bot requires the Discord.py library which can be installed using pip packag
 DISCORD_TOKEN=Your Token Here
 ```
 4. Run Main.py to start the bot!
+
+## Note
+This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
 ## Credits
 This bot contains code from the following Repos:
