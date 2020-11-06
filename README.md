@@ -18,6 +18,10 @@ DISCORD_TOKEN=Your Token Here
 ## Note
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
+## Upcoming Changes
+1. Make Bot send logs about commands used to log channel.
+2. Transition to MongoDB.
+
 ## Credits
 This bot contains code from the following Repos:
 1. [Robobert](https://github.com/JTexpo/Robobert): For the Point.py, Util.py and SQL_CMDS
