@@ -2,6 +2,7 @@ import discord
 import asyncio
 import sqlite3
 import random
+import Util
 from discord.ext import commands
 
 class Mod(commands.Cog):
@@ -11,6 +12,7 @@ class Mod(commands.Cog):
 	@commands.command(name='clear', aliases=['purge', 'delete'], help='Clears the given amount of messages. Clears 3 messages by default.')
 	@commands.has_permissions(manage_messages=True)
 	async def clear(self, ctx, amount=3):
+		await Util.command_log(self.client, ctx, "clear")
 		if amount < 0 or amount > 100:
 			await ctx.send("Enter a number between 0 and 100")
 		else:

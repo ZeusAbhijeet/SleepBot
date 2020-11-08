@@ -9,19 +9,22 @@ class Point(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 
-	@commands.command(name = 'give_points')
+	@commands.command(name = 'give_points', aliases = ['give_coins'])
 	@commands.has_role('SleepBot Admin')
 	async def give_points(self, ctx, target: discord.Member = None, amount = 0):
+		await Util.command_log(self.client, ctx, "give_points")
 		if target == None:
 			return
 		if target.id in Util.POINT:
 			Util.POINT[target.id] += amount
 		else:
 			Util.POINT[target.id] = amount
-		await ctx.send(f'Gave {target} {amount} points')
+		await ctx.send(f'Gave {target} {amount} coins')
 	
-	@commands.command(name='points', aliases=['point', 'all_points'])
+	@commands.command(name='points', aliases=['point', 'all_points', 'coins', 'all_coins'])
+	@Util.is_point_cmd_chnl()
 	async def points(self, ctx, target: discord.Member = None):
+		await Util.command_log(self.client, ctx, "points")
 		total_point = dict(Util.POINT)
 		for user in Util.DB_POINT:
 			if user[0] in total_point:
@@ -31,8 +34,8 @@ class Point(commands.Cog):
 		if target != None :
 			if not (target.id in total_point):
 				total_point[target.id] = 0
-			embed = discord.Embed(title = "User {}'s Points".format(target.name),
-				description = "{} has {} points since reset.".format(target.name,total_point[target.id]),
+			embed = discord.Embed(title = "User {}'s Coins".format(target.name),
+				description = "{} has {} coins since reset.".format(target.name,total_point[target.id]),
 				colour = random.randint(0,0xffffff)
 				)
 			await ctx.send(embed = embed)
@@ -41,8 +44,8 @@ class Point(commands.Cog):
 		top_20 = 1
 		total_point = sorted(total_point.items(), key = lambda kv: kv[1])
 		total_point.reverse()
-		embed = discord.Embed(title = "Point Leaderboard",
-			description = "Top Point Since Last Reset.",
+		embed = discord.Embed(title = "Coins Leaderboard",
+			description = "Top Coins Since Last Reset.",
 			colour = random.randint(0,0xffffff)
 			)
 		for user in total_point:
@@ -51,6 +54,11 @@ class Point(commands.Cog):
 			if top_20 == 21:
 				break
 		await ctx.send(embed = embed)
+	@points.error
+	async def points_error(self, ctx, error):
+		if isinstance(error, commands.CheckFailure):
+			await ctx.send("Points command can only be used in <#773962393109135380> channel!")
+
 
 
 def setup(client):

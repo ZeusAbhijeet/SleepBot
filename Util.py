@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
+import random
 # For Database related stuff
 import sqlite3
 from dotenv import load_dotenv
@@ -19,6 +20,16 @@ c.execute("SELECT channel_ID FROM channel_table WHERE title='LOG';")
 LOG = c.fetchone()
 c.execute("SELECT user_id, points FROM point_table;")
 DB_POINT = c.fetchall()
+c.execute("SELECT channel_ID FROM channel_table WHERE title='POINT';")
+POINTCMD = c.fetchone()
+
+POINTCMD = int(POINTCMD[0])
+
+def is_point_cmd_chnl():
+    def predicate(ctx):
+        return int(ctx.channel.id) == int(POINTCMD)
+    return commands.check(predicate)
+
 
 conn.close()
 
@@ -59,4 +70,18 @@ async def Backup(client):
 		conn.close()
 
 		POINT = {}
+
+# Function to log commands
+async def command_log(client, ctx, cmd_name):
+	embed = discord.Embed(
+		title = "SleepBot Command Logs",
+		description = ("Command: {}\nMessage Content: {}".format(cmd_name, ctx.message.content)),
+		colour = random.randint(0, 0xffffff)
+	)
+	embed.add_field(name = "In Guild:", value = "{}".format(ctx.guild), inline = False)
+	embed.add_field(name = "In Channel:", value = "{} Channel_ID: {}".format(ctx.channel, ctx.channel.id), inline = False)
+	embed.add_field(name = "Author:", value = "{}, Nick: {}, ID: {}".format(ctx.author, ctx.author.nick, ctx.author.id), inline = False)
+	embed.add_field(name = "Time:", value = "{}".format(datetime.now()), inline = False)
+
+	await client.get_channel(LOG[0]).send(embed = embed)
 
