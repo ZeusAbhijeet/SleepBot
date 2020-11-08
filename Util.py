@@ -28,7 +28,7 @@ async def Backup(client):
 	global POINT
 	global DB_POINT
 	while not client.is_closed():
-		await client.get_channel(LOG[0]).send(f"Backup OK: {datetime.now()}")
+		await client.get_channel(LOG[0]).send(f"Backup OK: ```{datetime.now()}```")
 		# Repeat every 1 hour
 		await asyncio.sleep(1800)
 		conn = sqlite3.connect('Database.db')
