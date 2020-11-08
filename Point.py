@@ -57,7 +57,7 @@ class Point(commands.Cog):
 	@points.error
 	async def points_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):
-			await ctx.send("Points command can only be used in <#773962393109135380> channel!")
+			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
 
 
 
