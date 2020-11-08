@@ -18,9 +18,14 @@ DISCORD_TOKEN=Your Token Here
 ## Note
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
+## Changelogs
+08 Nov 2020:
+1. Restricted points command to one channel. Running it in any other channel will show an error.
+2. Added new alises for points and give_points commands
+3. Added command logging. Bot will now send a message in the log channel with details about the command, the message content, message author, etc.
+
 ## Upcoming Changes
-1. Make Bot send logs about commands used to log channel.
-2. Transition to MongoDB.
+1. Transition to MongoDB.
 
 ## Credits
 This bot contains code from the following Repos:
