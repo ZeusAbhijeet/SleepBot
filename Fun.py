@@ -58,13 +58,13 @@ class Fun(commands.Cog):
 			
 	@commands.command(name='gib_rose')
 	@commands.cooldown(1, 300, commands.BucketType.user)
-	async def gib-rose(self, ctx, target : discord.Member = None, *, reason = "none"):
+	async def gib_rose(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} just gave a Rose!".format(ctx.author.name) if target == None else "{} is giving a rose to {}, Celebrate!".format(ctx.author.name, target.name)
-		description = "Ok bro Take Thiss" if reason == "none" else "Awesome!\n**Reason:** {}".format(reason)
+		description = "Take this rose pls" if reason == "none" else "Take this rose pls\n**Reason:** {}".format(reason)
 		url = 'https://cdn.discordapp.com/attachments/729619832097472552/776024679684505600/gibrose.gif'
 		await self.fun_command_embed(ctx, title, description, url)
-	@gib-rose.error
-	async def gib-rose_error(self, ctx, error):
+	@gib_rose.error
+	async def gib_rose_error(self, ctx, error):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
