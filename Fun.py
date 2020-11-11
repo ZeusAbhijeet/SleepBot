@@ -56,6 +56,19 @@ class Fun(commands.Cog):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
 			
+	@commands.command(name='suicide')
+	@commands.cooldown(1, 300, commands.BucketType.user)
+	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
+		title = "{} is Killing Himslef, Its too late !!".format(ctx.author.name) if target == None else "{} is Killing Himslef, Its too late !!".format(ctx.author.name, target.name)
+		description = "Gun is Loaded guys I'm sorry!" if reason == "none" else "The Bullet Has been Loaded! Time to fire the trigger!\n**Reason:** {}".format(reason)
+		url = 'https://cdn.discordapp.com/attachments/755730944660340786/776008877295665162/suicide.gif'
+		await self.fun_command_embed(ctx, title, description, url)
+	@ban.error
+	async def ban_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
+			await ctx.send(embed = embed)
+			
 			
 
 	
