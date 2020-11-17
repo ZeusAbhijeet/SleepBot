@@ -9,10 +9,16 @@ if __name__ == '__main__':
 	sql_cmd = open("./SQL_CMDS/c-channel_table.txt", 'r').read()
 	c.execute(sql_cmd)
 	print("Created Channel Table")
+	sql_cmd = open("./SQL_CMDS/c-general_table.txt", 'r').read()
+	c.execute(sql_cmd)
+	print("Created General Table")
 
 	sql_cmd = open("./SQL_CMDS/i-channel_table.txt", 'r').read()
 	c.execute(sql_cmd)
 	print("Init into channel_table")
+	sql_cmd = open("./SQL_CMDS/i-general_table.txt", 'r').read()
+	c.execute(sql_cmd)
+	print("Init into general_table")
 
 	conn.commit()
 	conn.close()

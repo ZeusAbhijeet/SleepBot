@@ -1,0 +1,5 @@
+CREATE TABLE general_table (
+db_ID	  INTEGER      PRIMARY KEY AUTOINCREMENT,
+title		VARCHAR(40)  NOT NULL,
+info		VARCHAR(150)  NOT NULL
+);

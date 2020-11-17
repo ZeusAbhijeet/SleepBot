@@ -1,10 +1,21 @@
 import discord
 import random
+import asyncio
+import sqlite3
+import Util
 from discord.ext import commands
 
 class Fun(commands.Cog):
 	def __init__(self, client):
 		self.client = client
+		conn = sqlite3.connect('Database.db')
+		c = conn.cursor()
+		c.execute("SELECT info FROM general_table WHERE title='STARBOARD-EMOJI';")
+		self.starboard_emoji = c.fetchone()
+		c.execute("SELECT channel_ID FROM channel_table WHERE title='STARBOARD';")
+		self.starboard_chnl = c.fetchone()
+		conn.close()
+		self.starboard_emoji = int(self.starboard_emoji[0])
 	
 	async def fun_command_embed(self, ctx, title_string, description_string, image_url):
 		embed = discord.Embed(title = title_string,
@@ -68,6 +79,24 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
+
+	@commands.Cog.listener()
+	async def on_reaction_add(self, ctx, user):
+		try:
+			mychn = self.client.get_channel(int(self.starboard_chnl[0]))
+			if((ctx.emoji.id == self.starboard_emoji) and
+				ctx.count == 3 and
+				ctx.message.channel != mychn and
+				(not(ctx.message.id in Util.HIGHLIGHT_HIST))):
+				embed = discord.Embed(description = "{}\n\n".format(ctx.message.content),
+						colour = random.randint(0, 0xffffff))
+				embed.add_field(name = "Source", value = "[Link]({})".format(ctx.message.jump_url), inline = False)
+				embed.set_author(name = ctx.message.author, icon_url = ctx.message.author.avatar_url)
+				Util.HIGHLIGHT_HIST.append(ctx.message.id)
+				await mychn.send(embed = embed)
+		except Exception as error:
+			return
+
 
 	
 def setup(client):
