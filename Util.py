@@ -11,7 +11,6 @@ from datetime import date
 
 
 POINT = {}
-HIGHLIGHT_HIST = []
 
 # Open and connect to Database File
 conn = sqlite3.connect('Database.db')
@@ -39,7 +38,6 @@ async def Backup(client):
 	await client.wait_until_ready()
 	global POINT
 	global DB_POINT
-	global HIGHLIGHT_HIST
 	while not client.is_closed():
 		await client.get_channel(LOG[0]).send(f"Backup OK: ```{datetime.now()}```")
 		# Repeat every 1 hour
@@ -49,8 +47,6 @@ async def Backup(client):
 
 		c.execute("SELECT user_id, points FROM point_table;")
 		DB_POINT = c.fetchall()
-
-		HIGHLIGHT_HIST = []
 
 		await client.get_channel(int(LOG[0])).send(f"Performing Backup: ```{datetime.now()}```")
 		# POINT BACKUP
