@@ -19,9 +19,6 @@ DISCORD_TOKEN=Your Token Here
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
 ## Changelogs
-17 Nov 2020:
-1. Add Starboard
-
 08 Nov 2020:
 1. Restricted points command to one channel. Running it in any other channel will show an error.
 2. Added new alises for points and give_points commands
