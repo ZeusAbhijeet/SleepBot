@@ -26,6 +26,7 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Upcoming Changes
 1. Transition to MongoDB.
+2. Add command to share coins with other users
 
 ## Credits
 This bot contains code from the following Repos:
