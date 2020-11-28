@@ -21,7 +21,7 @@ class Point(commands.Cog):
 			Util.POINT[target.id] = amount
 		await ctx.send(f'Gave {target} {amount} coins')
 	
-	@commands.command(name='points', aliases=['point', 'all_points', 'coins', 'all_coins'])
+	@commands.command(name='points', aliases=['point', 'all_points', 'coins', 'all_coins'], help="Shows the Coins that the mentioned user has. If no one is mentioned then shows the Top 20 users.")
 	@Util.is_point_cmd_chnl()
 	async def points(self, ctx, target: discord.Member = None):
 		await Util.command_log(self.client, ctx, "points")

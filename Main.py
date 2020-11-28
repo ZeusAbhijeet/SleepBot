@@ -6,6 +6,7 @@ import asyncio
 # Import Util.py to get tasks
 import Util
 from discord.ext import commands, tasks
+from pretty_help import PrettyHelp
 from dotenv import load_dotenv
 from itertools import cycle
 from datetime import datetime
@@ -19,7 +20,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 # Setting Prefix
-client = commands.Bot(command_prefix = '.s', case_insensitive=True, intents = intents)
+client = commands.Bot(command_prefix = ['.s', '?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))
 
 #Startup routine
 @client.event
@@ -30,7 +31,7 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game("with points | .shelp"))
+	await client.change_presence(activity=discord.Game("with points | ?help"))
 
 if __name__ == '__main__':
 	extensions = {'Info', 'Point', 'Fun', 'Mod'} #'Points, 'Mod', 'Util'

@@ -17,7 +17,7 @@ class Fun(commands.Cog):
 	
 	
 	
-	@commands.command(name='ban')
+	@commands.command(name='ban', help="Ban the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} is Flaming everyone, Dodge !!".format(ctx.author.name) if target == None else "{} is Flaming {} into the Oblivion with the Ban Flame!".format(ctx.author.name, target.name)
@@ -30,7 +30,7 @@ class Fun(commands.Cog):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
 	
-	@commands.command(name='kick')
+	@commands.command(name='kick', help="Kick the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def kick(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} is Kicking Everyone Out of the Party!".format(ctx.author.name) if target == None else "{} is Kicking {} Out of the Party!".format(ctx.author.name, target.name)
@@ -43,7 +43,7 @@ class Fun(commands.Cog):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
 	
-	@commands.command(name='shoot')
+	@commands.command(name='shoot', help="Shoot the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def shoot(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} just shot everyone!".format(ctx.author.name) if target == None else "{} is Shooting {} Out of the Party!".format(ctx.author.name, target.name)
@@ -56,7 +56,7 @@ class Fun(commands.Cog):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
 			
-	@commands.command(name='gib_rose')
+	@commands.command(name='gib_rose', help="Give a rose to the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def gib_rose(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} just gave a Rose!".format(ctx.author.name) if target == None else "{} is giving a rose to {}, Celebrate!".format(ctx.author.name, target.name)
