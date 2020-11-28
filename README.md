@@ -23,6 +23,7 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 1. Using PrettyHelp as default help command.
 2. Added Avatar command to show the avatar of mentioned user.
 3. Added an About command.
+4. Added a new prefix '?'.
 
 08 Nov 2020:
 1. Restricted points command to one channel. Running it in any other channel will show an error.
