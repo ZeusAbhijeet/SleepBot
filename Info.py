@@ -31,7 +31,7 @@ class Info(commands.Cog):
 	@commands.command(name='about', help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
-			description="SleepBot is a custom coded and open source bot made by <@!515097702057508882> for Clinify.in Discord Server. It is writen in Python and uses discord.py library.", 
+			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is writen in Python and uses discord.py library.", 
 			colour = random.randint(0, 0xffffff))
 		aboutEmbed.set_thumbnail(url=self.client.user.avatar_url)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
