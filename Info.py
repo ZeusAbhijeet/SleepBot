@@ -31,7 +31,7 @@ class Info(commands.Cog):
 	@commands.command(name='about', help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
-			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is writen in Python and uses discord.py library.", 
+			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
 			colour = random.randint(0, 0xffffff))
 		aboutEmbed.set_thumbnail(url=self.client.user.avatar_url)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
@@ -39,7 +39,8 @@ class Info(commands.Cog):
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contributors!",
-			value="**Thank you to the following people for contributing:**\n1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)",
+			value="""**Thank you to the following people for contributing:**
+				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)""",
 			inline=False
 		)
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
