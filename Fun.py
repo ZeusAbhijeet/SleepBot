@@ -6,11 +6,12 @@ class Fun(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 	
-	async def fun_command_embed(self, ctx, title_string, description_string, image_url):
+	async def fun_command_embed(self, ctx, title_string, description_string, image_url, result=None, val=None):
 		embed = discord.Embed(title = title_string,
 			description = description_string,
 			colour = random.randint(0,0xffffff)
 		)
+		embed.add_field(name = result, value = val)
 		embed.set_image(url = image_url)
 		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
 		await ctx.send(embed = embed)
@@ -68,7 +69,22 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-
+	@commands.command(name='flip', help='Flip a coin for you')
+	async def flip_coin(self,ctx):
+		flip=random.randint(0,1)
+		if (flip==0):
+			x="Heads"
+		else:
+			x="Tails"
+		title="Flipping the coin"
+		description="Coin is in the air and result is..."
+		name = "Result:"
+		value = x
+		url="https://cdn.discordapp.com/attachments/774135888183558164/784011115348361226/tenor_2.gif"
+		await self.fun_command_embed(ctx,title, description, url, name, value)
+	
+		
+		
 	
 def setup(client):
 	client.add_cog(Fun(client))
