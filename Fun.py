@@ -15,19 +15,6 @@ class Fun(commands.Cog):
 		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
 		await ctx.send(embed = embed)
 	
-	@commands.command(name='avatar', aliases=['av','profile', 'pfp'], help='Sends the Avatar of the Mentioned User. If no one is mentioned then sends the Avatar of the Author.')
-	async def avatar(self, ctx, *, target: discord.Member = None):
-		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff))
-		if target == None:
-			pfp_url = ctx.message.author.avatar_url
-			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
-		else:
-			pfp_url = target.avatar_url
-			embed.set_author(name=target, icon_url=target.avatar_url)
-		embed.set_image(url=pfp_url)
-		embed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
-		await ctx.send(embed=embed)
-	
 	@commands.command(name='ban', help="Ban the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
@@ -79,7 +66,21 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-
+	
+	@commands.command(name='flip', help='Flip a coin for you')
+	async def flip_coin(self,ctx):
+		flip=random.randint(0,1)
+		if (flip==0):
+			x="Heads"
+		else:
+			x="Tails"
+		title="Flipping the coin"
+		description="Coin is in the air and result is..."
+		name = "Result:"
+		value = x
+		embed = discord.Embed(title = title, description = description, colour = random.randint(0, 0xffffff))
+		embed.add_field(name = name, value = value)
+		await ctx.send(embed = embed)
 	
 def setup(client):
 	client.add_cog(Fun(client))
