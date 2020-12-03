@@ -20,7 +20,7 @@ class Mod(commands.Cog):
 			await ctx.send("Enter a number between 0 and 100")
 		else:
 			deleted = await ctx.channel.purge(limit=amount)
-			msg = f'**Deleted {len(deleted)}/{amount} messages**!'
+			msg = f'Deleted **{len(deleted)}/{amount}** messages!'
 			embed = discord.Embed(title = 'Delete Messages',
 				description = msg,
 				colour = random.randint(0,0xffffff))
@@ -51,7 +51,7 @@ class Mod(commands.Cog):
 				msgList.append(msg)
 		await ctx.channel.delete_messages(msgList)
 		embed = discord.Embed(title = 'Delete Emotes',
-				description = "Deleted {}/{} emotes!".format(deleted, saveamount),
+				description = "Deleted **{}/{}** emotes!".format(deleted, saveamount),
 				colour = random.randint(0,0xffffff))
 		await ctx.send(embed = embed, delete_after = 5)
 	@clearemote.error
@@ -80,7 +80,7 @@ class Mod(commands.Cog):
 				msgList.append(msg)
 		await ctx.channel.delete_messages(msgList)
 		embed = discord.Embed(title = 'Delete Messages', 
-			description = "Deleted {}/{} messages".format(deleted,saveamount),
+			description = "Deleted **{}/{}** messages".format(deleted,saveamount),
 			colour = random.randint(0, 0xffffff))
 		await ctx.send(embed = embed, delete_after = 5)
 	@clearuser.error
@@ -116,7 +116,7 @@ class Mod(commands.Cog):
 				msgList.append(msg)
 		await ctx.channel.delete_messages(msgList)
 		embed = discord.Embed(title = 'Delete Messages', 
-			description = "Deleted {}/{} messages".format(deleted,saveamount),
+			description = "Deleted **{}/{}** messages".format(deleted,saveamount),
 			colour = random.randint(0, 0xffffff))
 		await ctx.send(embed = embed, delete_after = 5)
 	@clearonly.error
