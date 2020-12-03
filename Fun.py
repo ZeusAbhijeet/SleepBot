@@ -6,17 +6,14 @@ class Fun(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 	
-	async def fun_command_embed(self, ctx, title_string, description_string, image_url, result=None, val=None):
+	async def fun_command_embed(self, ctx, title_string, description_string, image_url):
 		embed = discord.Embed(title = title_string,
 			description = description_string,
 			colour = random.randint(0,0xffffff)
 		)
-		embed.add_field(name = result, value = val)
 		embed.set_image(url = image_url)
 		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
 		await ctx.send(embed = embed)
-	
-	
 	
 	@commands.command(name='ban', help="Ban the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
@@ -69,6 +66,7 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
+	
 	@commands.command(name='flip', help='Flip a coin for you')
 	async def flip_coin(self,ctx):
 		flip=random.randint(0,1)
@@ -80,11 +78,9 @@ class Fun(commands.Cog):
 		description="Coin is in the air and result is..."
 		name = "Result:"
 		value = x
-		url="https://cdn.discordapp.com/attachments/774135888183558164/784011115348361226/tenor_2.gif"
-		await self.fun_command_embed(ctx,title, description, url, name, value)
-	
-		
-		
+		embed = discord.Embed(title = title, description = description, colour = random.randint(0, 0xffffff))
+		embed.add_field(name = name, value = value)
+		await ctx.send(embed = embed)
 	
 def setup(client):
 	client.add_cog(Fun(client))
