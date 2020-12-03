@@ -14,19 +14,6 @@ class Info(commands.Cog):
 		)
 		embed.set_footer(text=f'Requested by {ctx.author}')
 		await ctx.send(embed=embed)
-
-	@commands.command(name='avatar', aliases=['av','profile', 'pfp'], help='Sends the Avatar of the Mentioned User. If no one is mentioned then sends the Avatar of the Author.')
-	async def avatar(self, ctx, *, target: discord.Member = None):
-		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff))
-		if target == None:
-			pfp_url = ctx.message.author.avatar_url
-			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
-		else:
-			pfp_url = target.avatar_url
-			embed.set_author(name=target, icon_url=target.avatar_url)
-		embed.set_image(url=pfp_url)
-		embed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
-		await ctx.send(embed=embed)
 	
 	@commands.command(name='about', help='About the bot!')
 	async def about(self, ctx):
