@@ -27,7 +27,8 @@ class Info(commands.Cog):
 		)
 		aboutEmbed.add_field(name="Contributors!",
 			value="""**Thank you to the following people for contributing:**
-				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)""",
+				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)
+				3. [parthivpatel1106](https://github.com/parthivpatel1106)""",
 			inline=False
 		)
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)

@@ -67,7 +67,7 @@ class Fun(commands.Cog):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
 	
-	@commands.command(name='flip', help='Flip a coin for you')
+	@commands.command(name='flip', aliases=['flipacoin', 'coinflip'], help='Flip a coin for you')
 	async def flip_coin(self,ctx):
 		flip=random.randint(0,1)
 		if (flip==0):
@@ -80,9 +80,8 @@ class Fun(commands.Cog):
 		value = x
 		embed = discord.Embed(title = title, description = description, colour = random.randint(0, 0xffffff))
 		embed.add_field(name = name, value = value)
+		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
 		await ctx.send(embed = embed)
 	
 def setup(client):
 	client.add_cog(Fun(client))
-
-
