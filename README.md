@@ -19,6 +19,9 @@ DISCORD_TOKEN=Your Token Here
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
 ## Changelogs
+08 Dec 2020:
+1. Added "Flip a Coin" command (Contributed by [parthivpatel1106](https://github.com/parthivpatel1106)).
+
 28 Nov 2020:
 1. Using PrettyHelp as default help command.
 2. Added Avatar command to show the avatar of mentioned user.
