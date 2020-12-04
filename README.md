@@ -28,7 +28,7 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 04 Dec 2020:
 
-1. Added "howtoask" command (Recommended by [Zircoz](https://github.com/Zircoz))
+1. Added "howtoask" and "beforeyouask" commands (Recommended by [Zircoz](https://github.com/Zircoz))
 
 03 Dec 2020:
 
