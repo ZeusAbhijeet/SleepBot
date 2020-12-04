@@ -20,7 +20,7 @@ class Info(commands.Cog):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
 			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
 			colour = random.randint(0, 0xffffff))
-		aboutEmbed.set_thumbnail(url=self.client.user.avatar_url)
+		aboutEmbed.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607093923/SleepBot/Info%20Commands/SleepBot_Image.png')
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
 			value="SleepBot is an Open Source bot with it's source code available [here](https://github.com/ZeusAbhijeet/SleepBot). You are free to contribute to it!",
 			inline=False

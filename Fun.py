@@ -20,7 +20,7 @@ class Fun(commands.Cog):
 	async def ban(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} is Flaming everyone, Dodge !!".format(ctx.author.name) if target == None else "{} is Flaming {} into the Oblivion with the Ban Flame!".format(ctx.author.name, target.name)
 		description = "The Fuel Has been Injected! Time to Ban!" if reason == "none" else "The Fuel Has been Injected! Time to Ban!\n**Reason:** {}".format(reason)
-		url = 'https://cdn.discordapp.com/attachments/755740543358861383/772007520532168715/banpower.gif'
+		url = 'https://res.cloudinary.com/zeusabhijeet/image/upload/v1607091376/SleepBot/Fun%20Commands/ban.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@ban.error
 	async def ban_error(self, ctx, error):
@@ -33,7 +33,7 @@ class Fun(commands.Cog):
 	async def kick(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} is Kicking Everyone Out of the Party!".format(ctx.author.name) if target == None else "{} is Kicking {} Out of the Party!".format(ctx.author.name, target.name)
 		description = "Get Out or Get Rekt!" if reason == "none" else "Get Out or Get Rekt!\n**Reason:** {}".format(reason)
-		url = 'https://cdn.discordapp.com/attachments/771081877414346772/771991494923386880/tenor_1.gif'
+		url = 'https://res.cloudinary.com/zeusabhijeet/image/upload/v1607091855/SleepBot/Fun%20Commands/kick.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@kick.error
 	async def kick_error(self, ctx, error):
@@ -46,7 +46,7 @@ class Fun(commands.Cog):
 	async def shoot(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} just shot everyone!".format(ctx.author.name) if target == None else "{} is Shooting {} Out of the Party!".format(ctx.author.name, target.name)
 		description = "The gun's loaded! I taught y'all how to dodge! Right?" if reason == "none" else "C'mon I taught you how to dodge!\n**Reason:** {}".format(reason)
-		url = 'https://cdn.discordapp.com/attachments/755740543358861383/772012691081527296/shooting.gif'
+		url = 'https://res.cloudinary.com/zeusabhijeet/image/upload/v1607092060/SleepBot/Fun%20Commands/shoot.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@shoot.error
 	async def shoot_error(self, ctx, error):
@@ -59,7 +59,7 @@ class Fun(commands.Cog):
 	async def gib_rose(self, ctx, target : discord.Member = None, *, reason = "none"):
 		title = "{} just gave a Rose!".format(ctx.author.name) if target == None else "{} is giving a rose to {}, Celebrate!".format(ctx.author.name, target.name)
 		description = "Take this rose pls" if reason == "none" else "Take this rose pls\n**Reason:** {}".format(reason)
-		url = 'https://cdn.discordapp.com/attachments/729619832097472552/776024679684505600/gibrose.gif'
+		url = 'https://res.cloudinary.com/zeusabhijeet/image/upload/v1607091834/SleepBot/Fun%20Commands/gibrose.gif'
 		await self.fun_command_embed(ctx, title, description, url)
 	@gib_rose.error
 	async def gib_rose_error(self, ctx, error):
