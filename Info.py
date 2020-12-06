@@ -16,14 +16,17 @@ class Info(commands.Cog):
 		await ctx.send(embed=embed)
 	
 	@commands.command(name='howtoask', help='Gives an explaination on how to ask a question')
-	async def howtoask(self, ctx):
+	async def howtoask(self, ctx, target: discord.Member = None):
 		embedcolour = random.randint(0, 0xffffff)
 		helpEmbed = discord.Embed(title = "How to ask",
 				description = "Here is a short explanation on how you should ask a question efficiently:",
 				colour = embedcolour
 		)
 		helpEmbed.set_thumbnail(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1607099122/SleepBot/Info%20Commands/ask_question.png")
-		helpEmbed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+		if target != None:
+			helpEmbed.set_author(name=target, icon_url=target.avatar_url)
+		else:
+			helpEmbed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 		helpEmbed.add_field(name="No Hello",
 			value="It's alright if you don't greet. You can directly ask your question right away; it saves your's and the other person's time. More on that [here](https://www.nohello.com/).",
 		)
@@ -55,16 +58,21 @@ print("Hello World!")
 				You can read more about how Discord's Markdown works [here](https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51).""",
 			inline = False)
 		helpEmbed1.set_footer(text="Embed 2 of 2")
+		if target != None:
+			await ctx.send("<@!{}>".format(target.id))
 		await ctx.send(embed = helpEmbed)
 		await ctx.send(embed = helpEmbed1)
 	
 	@commands.command(name='beforeyouask', help="Gives an explaination on what to do before asking a question")
-	async def beforeyouask(self, ctx):
+	async def beforeyouask(self, ctx, target: discord.Member = None):
 		embed = discord.Embed(title = "Before You Ask",
 			description = "Before you ask a question, make sure you do the following:",
 			colour = random.randint(0, 0xffffff)
 		)
-		embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+		if target != None:
+			embed.set_author(name=target, icon_url=target.avatar_url)
+		else:
+			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 		embed.add_field(name="Check the pinned messages", 
 			value="The pinned messages contain some instructions on how to ask your question. They can also possibly contain a solution to your problem already.",
 			inline=False
@@ -85,6 +93,8 @@ print("Hello World!")
 			inline=False
 		)
 		embed.set_footer(text="Embed 1 of 1")
+		if target != None:
+			await ctx.send("<@!{}>".format(target.id))
 		await ctx.send(embed = embed)
 
 	@commands.command(name='about', help='About the bot!')

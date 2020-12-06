@@ -26,6 +26,10 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+06 Dec 2020:
+
+1. Bot will now ping the user you mention after running "howtoask" and "beforeyouask" commands.
+
 04 Dec 2020:
 
 1. Added "howtoask" and "beforeyouask" commands (Recommended by [Zircoz](https://github.com/Zircoz))
