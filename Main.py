@@ -20,7 +20,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 # Setting Prefix
-client = commands.Bot(command_prefix = ['.s', '?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))
+client = commands.Bot(command_prefix = ['?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))
 
 #Startup routine
 @client.event
