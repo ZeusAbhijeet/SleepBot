@@ -30,6 +30,8 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 1. Removed .s as a prefix.
 
+2. Added top command. Use top instead to view the leaderboards.
+
 06 Dec 2020:
 
 1. Bot will now ping the user you mention after running "howtoask" and "beforeyouask" commands.
