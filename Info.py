@@ -38,12 +38,14 @@ class Info(commands.Cog):
 		helpEmbed1.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607100500/SleepBot/Info%20Commands/howtoask_code.png')
 		helpEmbed1.add_field(name="1. Use an Online Code Sharing Service",
 			value="""
+				Use these if the code you are sharing is larger than 12 lines.
 				Below are some of the code sharing services that you can use: 
 				[GitHub Gist](https://gist.github.com/), [JSfiddle](https://jsfiddle.net/), [Codepen](https://codepen.io/),	
 				[Pastebin](https://pastebin.com/), [OnlineGDB](https://www.onlinegdb.com/), [repl.it](https://repl.it/), etc""",
 			inline = False)
 		helpEmbed1.add_field(name="2. Use a Code Snippet",
-			value="""To make a code snippet, encase your code between a pair of 3 backticks
+			value="""Use these when the code you are sharing is less than or about 12 lines.
+				To make a code snippet, encase your code between a pair of 3 backticks
 				
 				\```
 				Like This
