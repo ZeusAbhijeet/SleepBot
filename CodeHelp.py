@@ -10,8 +10,8 @@ class CodeHelp(commands.Cog):
         self.client = client;
     
     @commands.command('ask',help='ask a questions ')
-    async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str):
-        try:
+    async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str=None):
+        if term!=None:
             answer=''
             googlequery=term
             q=googlequery.replace(" ","+")
@@ -45,17 +45,19 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=embed)
                 await ctx.send(embed=notFoundEmbed)
                 pass
+            elif len(answer)>1:
+
+                notGotEmbed=discord.Embed(
+                title=":frowning2: Not Got Your Answer?",
+                description=f'[Search yourself]({searchurl})'
+                )
+                await ctx.send(embed=notGotEmbed)
+                pass
             else:
                 await ctx.send(answer)
                 pass
-            notGotEmbed=discord.Embed(
-                title=":frowning2: Not Got Your Answer?",
-                description=f'[Search yourself]({searchurl}) [OnlineGDB](https://www.onlinegdb.com/)'
-            )
-        except TypeError :
-            print('Error')
-            pass
-        finally:  
+           
+        else:  
             noargEmbed=discord.Embed(
                     title="Ask Something, it can't be blank",
                     description='''
