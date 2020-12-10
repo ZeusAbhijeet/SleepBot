@@ -46,7 +46,8 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=notFoundEmbed)
                 pass
             elif len(answer)>1:
-
+                await ctx.send(embed=embed)
+                await ctx.send(answer)
                 notGotEmbed=discord.Embed(
                 title=":frowning2: Not Got Your Answer?",
                 description=f'[Search yourself]({searchurl})'
@@ -54,8 +55,7 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=notGotEmbed)
                 pass
             else:
-                await ctx.send(embed=embed)
-                await ctx.send(answer)
+                
                 pass
            
         else:  
