@@ -54,6 +54,7 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=notGotEmbed)
                 pass
             else:
+                await ctx.send(embed=embed)
                 await ctx.send(answer)
                 pass
            
