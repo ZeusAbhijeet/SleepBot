@@ -48,18 +48,21 @@ class CodeHelp(commands.Cog):
             elif len(results)>0:
                 await ctx.send(embed=embed)
                 data=results
-                for i in data:
+                for i in range(len(data)):
                     # print(i)
                     # print(i['answer'])
-                    ans = i['answer']
-                    lang =i['language']
-                    source=i['source_id']
+                    if i > result_limit :
+                        break
+                    j=data[i]
+                    ans = j['answer']
+                    lang =j['language']
+                    source=j['source_id']
                     print(source)
                     answer+=f'```{lang}\n{ans}```'
 
                     answerEmbed=discord.Embed(
                         # name="name",
-                        description=f'```{lang}\n {ans}```'+f'\n [source]({source})'
+                        description=f'```{lang}\n {ans}```{i}'+f'\n [source]({source})'
                     )
                     await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
