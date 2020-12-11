@@ -24,30 +24,19 @@ class CodeHelp(commands.Cog):
                 colour=random.randint(0, 0xffffff)
             )
             # print(term)
+            results=[]
             async with aiohttp.ClientSession() as session:
                 async with session.get('https://www.codegrepper.com/api/search.php', params ={"q":term}) as r :
                     result = await r.json()
+                results=result['answers']
                 
-                data=result['answers']
                 answerEmbed=discord.Embed(
                     title='Answers',
                 )
-                for i in data:
-                    # print(i)
-                    # print(i['answer'])
-                    ans = i['answer']
-                    lang =i['language']
-                    source=i['source_id']
-                    answer+=f'```{lang}\n{ans}```'
-
-                    answerEmbed.add_field(
-                        name="name",
-                        value=f'```{lang}\n {ans}```'+f'\n [source]({source})'
-                    )
-            
+            print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
             
-            if len(answer)==0:
+            if len(results)<1:
                 notFoundEmbed=discord.Embed(
                     title="Answer Not Found",
                     description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
@@ -56,9 +45,23 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=embed)
                 await ctx.send(embed=notFoundEmbed)
                 pass
-            elif len(answer)>1:
+            elif len(results)>0:
                 await ctx.send(embed=embed)
-                await ctx.send(embed=answerEmbed)
+                data=results['answers']
+                for i in data:
+                    # print(i)
+                    # print(i['answer'])
+                    ans = i['answer']
+                    lang =i['language']
+                    source=i['source_id']
+                    print(source)
+                    answer+=f'```{lang}\n{ans}```'
+
+                    answerEmbed=discord.Embed(
+                        # name="name",
+                        description=f'```{lang}\n {ans}```'+f'\n [source]({source})'
+                    )
+                    await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
                 title=":frowning2: Not Got Your Answer?",
                 description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
