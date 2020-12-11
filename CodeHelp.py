@@ -47,7 +47,7 @@ class CodeHelp(commands.Cog):
                 pass
             elif len(results)>0:
                 await ctx.send(embed=embed)
-                data=results['answers']
+                data=results
                 for i in data:
                     # print(i)
                     # print(i['answer'])
