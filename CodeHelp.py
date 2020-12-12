@@ -7,9 +7,9 @@ import json
 
 class CodeHelp(commands.Cog):
     def __init__(self,client):
-        self.client = client;
+        self.client = client
     
-    @commands.command('ask',help='ask a questions ')
+    @commands.command('ask', help='ask a questions ')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str=None):
         if term!=None:
             googlequery=term
@@ -19,10 +19,12 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
+            embedColour = random.randint(0, 0xffffff)
+
             embed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
-                colour=random.randint(0, 0xffffff)
+                colour=embedColour
             )           
              # print(term)
             results=[]
@@ -33,6 +35,7 @@ class CodeHelp(commands.Cog):
                 
                 answerEmbed=discord.Embed(
                     title='Answers',
+                    colour=embedColour
                 )
             # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
@@ -41,7 +44,8 @@ class CodeHelp(commands.Cog):
                 notFoundEmbed=discord.Embed(
                     title="Answer Not Found",
                     description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
-                    \n[Search yourself]({searchurl})'''
+                    \n[Search yourself]({searchurl})''',
+                    colour=embedColour
                 )
                 await ctx.send(embed=embed)
                 await ctx.send(embed=notFoundEmbed)
@@ -66,18 +70,19 @@ class CodeHelp(commands.Cog):
                    
                     answerEmbed=discord.Embed(
                         # name="name",
-                        description=answer
+                        description=answer,
+                        colour=embedColour
                     )
                     await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
-                title=":frowning2: Not Got Your Answer?",
-                description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
-                \n[Search yourself]({searchurl})'''
+                title=":frowning2: Did Not Find Your Answer?",
+                description=f'''[Search yourself]({searchurl})
+                \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
+                ''',
+                colour=embedColour
                 )
                 await ctx.send(embed=notGotEmbed)
-                pass
             else:
-                
                 pass
            
         else:  
@@ -86,7 +91,8 @@ class CodeHelp(commands.Cog):
                     description='''
                     something expected 
                     `?ask what you want to ask`
-                    '''
+                    ''',
+                    colour=embedColour
                 )
             await ctx.send(embed=noargEmbed)
         # await ctx.send(answer)

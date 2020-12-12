@@ -108,7 +108,8 @@ print("Hello World!")
 		aboutEmbed.add_field(name="Contributors!",
 			value="""**Thank you to the following people for contributing:**
 				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)
-				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)""",
+				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)
+				5. [YogPanjarale](https://github.com/YogPanjarale)\n""",
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 

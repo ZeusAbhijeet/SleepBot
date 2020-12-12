@@ -26,6 +26,10 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+12 Dec 2020:
+
+1. Added new command 'ask' (Contributed by [YogPanjarale](https://github.com/YogPanjarale)).
+
 07 Dec 2020:
 
 1. Removed .s as a prefix.
