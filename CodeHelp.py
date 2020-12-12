@@ -57,12 +57,13 @@ class CodeHelp(commands.Cog):
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
-                    source=j['source_url']
-                    print(source,"source")
+                    # source=''
+                    # source=j['source_url']
+                    # print(source,"source")
                     answer=f'{i+1}\n```{lang}\n {ans}```'
 
-                    if len(source)>0:
-                        answer+=f'[source]({source})'
+                    # if len(source)>0:
+                    #     answer+=f'[source]({source})'
                    
                     answerEmbed=discord.Embed(
                         # name="name",
