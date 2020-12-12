@@ -12,18 +12,19 @@ class CodeHelp(commands.Cog):
     @commands.command('ask',help='ask a questions ')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str=None):
         if term!=None:
-            answer=''
             googlequery=term
             q=googlequery.replace(" ","+")
+            cq=googlequery.replace(" ","%20")
             searchurl='https://www.google.com/search?q='+q
-            print(searchurl,q)
+            originurl='https://www.codegrepper.com/search.php?q='+cq
+            # print(searchurl,q)
 
             embed = discord.Embed(
                 title ="You asked",
-                description =f'{term} \n ',
+                description =f'{term} \n [source]({originurl})',
                 colour=random.randint(0, 0xffffff)
-            )
-            # print(term)
+            )           
+             # print(term)
             results=[]
             async with aiohttp.ClientSession() as session:
                 async with session.get('https://www.codegrepper.com/api/search.php', params ={"q":term}) as r :
@@ -33,7 +34,7 @@ class CodeHelp(commands.Cog):
                 answerEmbed=discord.Embed(
                     title='Answers',
                 )
-            print(len(results),'length')
+            # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
             
             if len(results)<1:
@@ -51,18 +52,21 @@ class CodeHelp(commands.Cog):
                 for i in range(len(data)):
                     # print(i)
                     # print(i['answer'])
-                    if i > result_limit :
+                    if i >= result_limit :
                         break
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
-                    source=j['source_id']
-                    print(source)
-                    answer+=f'```{lang}\n{ans}```'
+                    source=j['source_url']
+                    print(source,"source")
+                    answer=f'```{lang}\n {ans}```'
 
+                    if len(source)>0:
+                        answer+=f'[source]({source})'
+                   
                     answerEmbed=discord.Embed(
                         # name="name",
-                        description=f'```{lang}\n {ans}```{i}'+f'\n [source]({source})'
+                        description=answer
                     )
                     await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
