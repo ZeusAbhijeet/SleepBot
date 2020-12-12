@@ -59,7 +59,7 @@ class CodeHelp(commands.Cog):
                     lang =j['language']
                     source=j['source_url']
                     print(source,"source")
-                    answer=f'```{lang}\n {ans}```'
+                    answer=f'{i+1}\n```{lang}\n {ans}```'
 
                     if len(source)>0:
                         answer+=f'[source]({source})'
