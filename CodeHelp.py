@@ -11,6 +11,7 @@ class CodeHelp(commands.Cog):
     
     @commands.command('ask', help='ask a questions ')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str=None):
+        embedColour = random.randint(0, 0xffffff)
         if term!=None:
             googlequery=term
             q=googlequery.replace(" ","+")
@@ -19,7 +20,7 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
-            embedColour = random.randint(0, 0xffffff)
+            
 
             embed = discord.Embed(
                 title ="You asked",
