@@ -73,6 +73,7 @@ print("Hello World!")
 			menu.show_command_message()
 			menu.persist_on_close()
 			menu.show_page_numbers()
+			menu.allow_multisession()
 			await menu.open()
 	
 	@commands.command(name='beforeyouask', help="Gives an explaination on what to do before asking a question")

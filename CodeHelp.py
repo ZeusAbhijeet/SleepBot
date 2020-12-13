@@ -89,6 +89,7 @@ class CodeHelp(commands.Cog):
                 menu.persist_on_close()
                 menu.show_page_numbers()
                 menu.show_skip_buttons()
+                menu.allow_multisession()
                 await menu.open()
                 await ctx.send(embed=notGotEmbed)
             else:
