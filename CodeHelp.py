@@ -62,13 +62,8 @@ class CodeHelp(commands.Cog):
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
-                    answer=f'{i+1}\n```{lang}\n {ans}```'
-
-                    answerEmbed=discord.Embed(
-                        # name="name",
-                        description=answer,
-                        colour=embedColour
-                    )
+                    # source=j['source_url']
+                    # print(source,"source")
                     await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
                 title=":frowning2: Did Not Find Your Answer?",
