@@ -59,7 +59,10 @@ print("Hello World!")
 
 				You can read more about how Discord's Markdown works [here](https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51).""",
 			inline = False)
-		helpEmbed1.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+		if target != None:
+			helpEmbed1.set_author(name=target, icon_url=target.avatar_url)
+		else:
+			helpEmbed1.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 		if target != None:
 			await ctx.send("<@!{}>".format(target.id))
 		if page == 1:
@@ -110,7 +113,7 @@ print("Hello World!")
 			await ctx.send("<@!{}>".format(target.id))
 		await ctx.send(embed = embed)
 
-	@commands.command(name='about', help='About the bot!')
+	@commands.command(name='about', aliases = ['info'], help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
 			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
