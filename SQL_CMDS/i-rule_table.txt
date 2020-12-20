@@ -1,0 +1,61 @@
+INSERT INTO rule_table VALUES
+(NULL,
+"Be respectful to everyone."),
+
+(NULL,
+"Sending/Linking any harmful material such as viruses, infected links, IP grabbers, or harm-ware results in an immediate and permanent ban."),
+
+(NULL,
+"Any kind of promotion in any of the channels except <#752560332450299944> is not allowed. Job listings are allowed in <#752580135298924544>. DM Promotion is strictly prohibited.
+Accessing <#752560332450299944> channel requires you to be Level 1."),
+
+(NULL,
+"Spamming in text channels is not allowed. This includes emotes, copy pasta, flooding chat by sending messages in multiple lines and large paragraphs. This will result in a mute.
+Arcane XP farming - sending multiple messages to gain ranks is not allowed."),
+
+(NULL,
+"Do not be a Racist or a Sexist. Sending racial slurs in any form will result in a permanent ban.
+Profanity is allowed as long as it does not break rule 1 or rule 5."),
+
+(NULL,
+"Avoid spoiling movies or games. If the movie/game was released 10+ years ago then it is exempt from this rule. For others, mark the text containing them as spoilers i.e. put the text within "||" || like this ||."),
+
+(NULL,
+"Do not flame others. Fighting will not be tolerated. If you find someone fighting, immediately ping an online Server Designer/Moderator or ping <@&782495306021470238> in extreme and urgent cases."),
+
+(NULL,
+"Refrain from discussing Political or Religious Topics. These tend to get out of hand pretty quick."),
+
+(NULL,
+"Respect the Server Designers/Moderators."),
+
+(NULL,
+"Keep the chats to the respective channels."),
+
+(NULL,
+"Trying to encourage rule breaking will result in a warn"),
+
+(NULL,
+"Do not ask for roles. Self-obtainable roles can be found in <#752466815128436826> and any other roles available will be given at the discretion of the Server Designers or Curious Harish."),
+
+(NULL,
+"No playing loud, disturbing music, ear-rape or ear-forced-sex-words in VCs. This includes shouting. Posting of similar media is also prohibited."),
+
+(NULL,
+"Disruption of normal workings of the server will result in a kick followed with a ban on repeated offences"),
+
+(NULL,
+"You need to be 13+ to be in this server. This is specified in Discord's ToS. Breaking this rule results in immediate ban along with a report to Discord's Trust and Safety Team."),
+
+(NULL,
+"Impersonating any of the members/bots/roles in the server is not allowed."),
+
+(NULL,
+"Profanity in username/nickname is not allowed and should be mentionable i.e. Should not use special characters or Zalgo. Your nickname will be changed and you will be notified about it."),
+
+(NULL,
+"NSFW content is not allowed in the server."),
+
+(NULL,
+"Stalking/sending unsolicited messages in DMs is strictly prohibited. This will result in a permanent ban and report to Discord Trust and Safety Team.
+If someone is doing so to you, report it to any of the Server Designers/Moderators or open a ticket by DMing <@!575252669443211264> with screenshots/proof.");
