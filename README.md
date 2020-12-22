@@ -26,6 +26,12 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+21 Dec 2020:
+
+1. Add new command: 'Slap' (Contributed by [itsCharmander](https://github.com/itsCharmander)).
+
+2. Add new command: 'Rule'. Sends the mentioned clause of the rules.
+
 13 Dec 2020:
 
 1. 'ask' and 'howtoask' commands now use menus to display multiple items.
