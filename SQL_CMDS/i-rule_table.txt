@@ -51,7 +51,7 @@ Profanity is allowed as long as it does not break rule 1 or rule 5."),
 "Impersonating any of the members/bots/roles in the server is not allowed."),
 
 (NULL,
-"Profanity in username/nickname is not allowed and should be mentionable i.e. Should not use special characters or Zalgo. Your nickname will be changed and you will be notified about it."),
+"Profanity in username/nickname is not allowed. Your nickname will be changed and you will be notified about it."),
 
 (NULL,
 "NSFW content is not allowed in the server."),

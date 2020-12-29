@@ -26,11 +26,11 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
-21 Dec 2020:
+29 Dec 2020:
 
-1. Add new command: 'Slap' (Contributed by [itsCharmander](https://github.com/itsCharmander)).
+1. Added alias for top command: 'lb'.
 
-2. Add new command: 'Rule'. Sends the mentioned clause of the rules.
+2. 'top' command no longer shows users who have left the server.
 
 13 Dec 2020:
 

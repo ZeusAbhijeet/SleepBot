@@ -19,6 +19,7 @@ if __name__ == '__main__':
 	sql_cmd = open("./SQL_CMDS/i-rule_table.txt", 'r').read()
 	c.execute(sql_cmd)
 	print("Init into Rule Table")
+	
 
 	conn.commit()
 	conn.close()
