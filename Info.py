@@ -135,20 +135,6 @@ print("Hello World!")
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await ctx.send(embed=aboutEmbed)
 
-	@commands.command(name = 'rule_lookup',
-                    aliases = ['rule'],
-					help = "Brings up the mentioned rule clause for quick reference.")
-	async def rule_lookup(self, ctx, rule = 1):
-		await Util.command_log(self.client,ctx,"rule_lookup")
-		conn = sqlite3.connect('Database.db')
-		c = conn.cursor()
-		rule = c.execute("SELECT * FROM rule_table WHERE db_ID = {};".format(rule)).fetchone()
-		conn.close()
-		await ctx.send(embed = discord.Embed(title = "{} Pulled Up The Rule As A Quick Reference!".format(ctx.author.name),
-            description = "**{}.** {}".format(rule[0],rule[1]),
-            colour = random.randint(0,0xffffff)))
-
-		
 
 def setup(client):
 	client.add_cog(Info(client))

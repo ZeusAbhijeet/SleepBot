@@ -18,7 +18,7 @@ Arcane XP farming - sending multiple messages to gain ranks is not allowed."),
 Profanity is allowed as long as it does not break rule 1 or rule 5."),
 
 (NULL,
-"Avoid spoiling movies or games. If the movie/game was released 10+ years ago then it is exempt from this rule. For others, mark the text containing them as spoilers i.e. put the text within "||" || like this ||."),
+"Avoid spoiling movies or games. If the movie/game was released 10+ years ago then it is exempt from this rule. For others, mark the text containing them as spoilers i.e. put the text within "||" \|| like this ||."),
 
 (NULL,
 "Do not flame others. Fighting will not be tolerated. If you find someone fighting, immediately ping an online Server Designer/Moderator or ping <@&782495306021470238> in extreme and urgent cases."),

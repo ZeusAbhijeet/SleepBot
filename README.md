@@ -26,6 +26,16 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+30 Dec 2020:
+
+Probably the last update of the year.
+
+1. Added new cog: Rule.
+
+2. Added new command: rule_begins.
+
+3. rule_lookup has now been added to Rule cog instead.
+
 29 Dec 2020:
 
 1. Added alias for top command: 'lb'.
