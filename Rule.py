@@ -42,7 +42,7 @@ class Rule(commands.Cog):
 Welcome to the **__Clinify Squad Discord Server__**! Enjoy your time here and make sure to read the rules carefully.
 Please read and abide by the Discord ToS/Guidelines. Breaking these will result in an immediate ban
 Discord ToS: https://discord.com/guidelines \n
-		"""
+**Server Rules:**"""
 		rule_message2 = ""
 		rule_message3 = ""
 		for rule in range(0,7):
@@ -62,14 +62,14 @@ Discord ToS: https://discord.com/guidelines \n
 		rule_message3 += """
 
 **Punishments :**
-  __3 Warns :__ 6 hour mute.
-  __4 Warns :__ Kick.
-  __8 Warns :__ Ban.
+  __3 Warns__ : 6 hour mute.
+  __4 Warns__ : Kick.
+  __8 Warns__ : Ban.
   
 **To clarify what spam means :**
 Sending 5 or more messages that are repeated or do not contribute to the conversation can be flagged as spam. Sending emotes is fine but sending singular emotes continuously 4 times in a row can be considered spam.
 
-**Members of Staff :
+**Members of Staff** :
  The following people are part of the staff team :
   __Server Designers/Admins__ : 
    Curious Harish: <@!580327337128755201>\nZeusAbhijeet: <@!515097702057508882>\nVicky: <@!715136706575073300>\nManav: <@!697431403314544670>\nShreyans: <@!486042263076470806>
