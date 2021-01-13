@@ -51,7 +51,7 @@ class Point(commands.Cog):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
 	
 	@commands.command(name='top', 
-		aliases=['leaderboard', 'all_coins', 'all_points'], 
+		aliases=['leaderboard', 'all_coins', 'all_points', 'lb'], 
 		help="Shows the top 20 users in leaderboard.")
 	@Util.is_point_cmd_chnl()
 	async def top(self, ctx):
@@ -70,7 +70,10 @@ class Point(commands.Cog):
 			colour = random.randint(0,0xffffff)
 			)
 		for user in total_point:
-			embed.add_field(name = "{} : {}".format(top_20,ctx.guild.get_member(int(user[0]))), value = user[1])
+			username = self.client.get_user(int(user[0]))
+			if username == None:
+				continue
+			embed.add_field(name = "{} : {}".format(top_20, username.display_name), value = user[1])
 			top_20 += 1
 			if top_20 == 21:
 				break

@@ -6,7 +6,7 @@ Though this bot is intended to be used only on the Clinify.in Discord Server, yo
 
 ## Dependancies
 
-This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/) and [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/) which can be installed using pip package manager.
+This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
 
 ## How to host the bot
 
@@ -25,6 +25,32 @@ DISCORD_TOKEN=Your Token Here
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
 ## Changelogs
+
+30 Dec 2020:
+
+Probably the last update of the year.
+
+1. Added new cog: Rule.
+
+2. Added new command: rule_begins.
+
+3. rule_lookup has now been added to Rule cog instead.
+
+29 Dec 2020:
+
+1. Added alias for top command: 'lb'.
+
+2. 'top' command no longer shows users who have left the server.
+
+13 Dec 2020:
+
+1. 'ask' and 'howtoask' commands now use menus to display multiple items.
+
+2. Fixed typos in 'ask' command.
+
+12 Dec 2020:
+
+1. Added new command 'ask' (Contributed by [YogPanjarale](https://github.com/YogPanjarale)).
 
 07 Dec 2020:
 

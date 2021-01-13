@@ -22,13 +22,19 @@ c.execute("SELECT user_id, points FROM point_table;")
 DB_POINT = c.fetchall()
 c.execute("SELECT channel_ID FROM channel_table WHERE title='POINT';")
 POINTCMD = c.fetchone()
+c.execute("SELECT channel_ID FROM channel_table WHERE title='RULE';")
+RULE_CHNL = c.fetchone()
 
 POINTCMD = int(POINTCMD[0])
+RULE_CHNL = int(RULE_CHNL[0])
 
 def is_point_cmd_chnl():
     def predicate(ctx):
         return int(ctx.channel.id) == int(POINTCMD)
     return commands.check(predicate)
+
+def is_rule_chnl(ctx):
+	return int(ctx.channel_id) == int(RULE_CHNL)
 
 
 conn.close()

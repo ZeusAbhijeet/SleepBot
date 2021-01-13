@@ -1,16 +1,19 @@
 import discord
 import random 
 from discord.ext import commands
+from dpymenus import Page, PaginatedMenu
 import aiohttp
 import typing 
 import json
 
 class CodeHelp(commands.Cog):
     def __init__(self,client):
-        self.client = client;
+        self.client = client
     
-    @commands.command('ask',help='ask a questions ')
-    async def ask(self,ctx, result_limit: typing.Optional[int] = 1, *, term: str=None):
+    @commands.command(name = 'ask',
+        aliases = ['get', 'getcode'],
+        help = 'Fetch code from CodeGrepper, Takes in No. of results (default 3) and the question.')
+    async def ask(self,ctx, result_limit: typing.Optional[int] = 3, *, term: str=None):
         if term!=None:
             googlequery=term
             q=googlequery.replace(" ","+")
@@ -19,10 +22,12 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
+            embedColour = random.randint(0, 0xffffff)
+
             embed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
-                colour=random.randint(0, 0xffffff)
+                colour=embedColour
             )           
              # print(term)
             results=[]
@@ -33,6 +38,7 @@ class CodeHelp(commands.Cog):
                 
                 answerEmbed=discord.Embed(
                     title='Answers',
+                    colour=embedColour
                 )
             # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
@@ -40,8 +46,10 @@ class CodeHelp(commands.Cog):
             if len(results)<1:
                 notFoundEmbed=discord.Embed(
                     title="Answer Not Found",
-                    description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
-                    \n[Search yourself]({searchurl})'''
+                    description=f'''[Search yourself]({searchurl})
+                    \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
+                    ''',
+                    colour=embedColour
                 )
                 await ctx.send(embed=embed)
                 await ctx.send(embed=notFoundEmbed)
@@ -49,6 +57,7 @@ class CodeHelp(commands.Cog):
             elif len(results)>0:
                 await ctx.send(embed=embed)
                 data=results
+                resultList = []
                 for i in range(len(data)):
                     # print(i)
                     # print(i['answer'])
@@ -57,28 +66,31 @@ class CodeHelp(commands.Cog):
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
-                    # source=''
-                    # source=j['source_url']
-                    # print(source,"source")
-                    answer=f'{i+1}\n```{lang}\n {ans}```'
-
-                    # if len(source)>0:
-                    #     answer+=f'[source]({source})'
-                   
                     answerEmbed=discord.Embed(
                         # name="name",
-                        description=answer
+                        description=answer,
+                        colour=embedColour
                     )
-                    await ctx.send(embed=answerEmbed)
+                    resultList.append(answerEmbed)
+                    #await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
-                title=":frowning2: Not Got Your Answer?",
-                description=f''' You can also contribute to this answers by intalling [codegrepper](https://www.codegrepper.com/) Extensions and marking answer when you find it
-                \n[Search yourself]({searchurl})'''
+                title=":frowning2: Did Not Find Your Answer?",
+                description=f'''[Search yourself]({searchurl})
+                \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
+                ''',
+                colour=embedColour
                 )
+                menu = PaginatedMenu(ctx)
+                menu.add_pages(resultList)
+                menu.set_timeout(30)
+                menu.show_command_message()
+                menu.persist_on_close()
+                menu.show_page_numbers()
+                menu.show_skip_buttons()
+                menu.allow_multisession()
+                await menu.open()
                 await ctx.send(embed=notGotEmbed)
-                pass
             else:
-                
                 pass
            
         else:  
@@ -87,7 +99,8 @@ class CodeHelp(commands.Cog):
                     description='''
                     something expected 
                     `?ask what you want to ask`
-                    '''
+                    ''',
+                    colour=embedColour
                 )
             await ctx.send(embed=noargEmbed)
         # await ctx.send(answer)

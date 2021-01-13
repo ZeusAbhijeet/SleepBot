@@ -1,0 +1,5 @@
+CREATE TABLE role_table (
+db_ID	  INTEGER      PRIMARY KEY AUTOINCREMENT,
+title		VARCHAR(40)  NOT NULL,
+role_ID	INTEGER      NOT NULL
+);

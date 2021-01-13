@@ -1,5 +1,8 @@
 import discord
 import random
+import Util
+import sqlite3
+from dpymenus import Page, PaginatedMenu
 from discord.ext import commands
 
 class Info(commands.Cog):
@@ -16,7 +19,7 @@ class Info(commands.Cog):
 		await ctx.send(embed=embed)
 	
 	@commands.command(name='howtoask', help='Gives an explaination on how to ask a question')
-	async def howtoask(self, ctx, target: discord.Member = None):
+	async def howtoask(self, ctx, page = 0, target: discord.Member = None):
 		embedcolour = random.randint(0, 0xffffff)
 		helpEmbed = discord.Embed(title = "How to ask",
 				description = "Here is a short explanation on how you should ask a question efficiently:",
@@ -30,7 +33,6 @@ class Info(commands.Cog):
 		helpEmbed.add_field(name="No Hello",
 			value="It's alright if you don't greet. You can directly ask your question right away; it saves your's and the other person's time. More on that [here](https://www.nohello.com/).",
 		)
-		helpEmbed.set_footer(text="Embed 1 of 2")
 		helpEmbed1 = discord.Embed(title = "Asking a Code Related Question",
 			description="""To ask a question on a code, refrain from sending screenshots or photos of the code as they are usually barely visible.
 			Here are two ways you can share your code:""",
@@ -38,12 +40,14 @@ class Info(commands.Cog):
 		helpEmbed1.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607100500/SleepBot/Info%20Commands/howtoask_code.png')
 		helpEmbed1.add_field(name="1. Use an Online Code Sharing Service",
 			value="""
+				Use these if the code you are sharing is larger than 12 lines.
 				Below are some of the code sharing services that you can use: 
 				[GitHub Gist](https://gist.github.com/), [JSfiddle](https://jsfiddle.net/), [Codepen](https://codepen.io/),	
 				[Pastebin](https://pastebin.com/), [OnlineGDB](https://www.onlinegdb.com/), [repl.it](https://repl.it/), etc""",
 			inline = False)
 		helpEmbed1.add_field(name="2. Use a Code Snippet",
-			value="""To make a code snippet, encase your code between a pair of 3 backticks
+			value="""Use these when the code you are sharing is less than or about 12 lines.
+				To make a code snippet, encase your code between a pair of 3 backticks
 				
 				\```
 				Like This
@@ -57,11 +61,25 @@ print("Hello World!")
 
 				You can read more about how Discord's Markdown works [here](https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51).""",
 			inline = False)
-		helpEmbed1.set_footer(text="Embed 2 of 2")
+		if target != None:
+			helpEmbed1.set_author(name=target, icon_url=target.avatar_url)
+		else:
+			helpEmbed1.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 		if target != None:
 			await ctx.send("<@!{}>".format(target.id))
-		await ctx.send(embed = helpEmbed)
-		await ctx.send(embed = helpEmbed1)
+		if page == 1:
+			await ctx.send(embed = helpEmbed)
+		elif page == 2:
+			await ctx.send(embed = helpEmbed1)
+		else:
+			menu = PaginatedMenu(ctx)
+			menu.add_pages([helpEmbed, helpEmbed1])
+			menu.set_timeout(30)
+			menu.show_command_message()
+			menu.persist_on_close()
+			menu.show_page_numbers()
+			menu.allow_multisession()
+			await menu.open()
 	
 	@commands.command(name='beforeyouask', help="Gives an explaination on what to do before asking a question")
 	async def beforeyouask(self, ctx, target: discord.Member = None):
@@ -97,7 +115,7 @@ print("Hello World!")
 			await ctx.send("<@!{}>".format(target.id))
 		await ctx.send(embed = embed)
 
-	@commands.command(name='about', help='About the bot!')
+	@commands.command(name='about', aliases = ['info'], help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
 			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
@@ -106,7 +124,8 @@ print("Hello World!")
 		aboutEmbed.add_field(name="Contributors!",
 			value="""**Thank you to the following people for contributing:**
 				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)
-				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)""",
+				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)
+				5. [YogPanjarale](https://github.com/YogPanjarale)\n""",
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
@@ -115,7 +134,7 @@ print("Hello World!")
 		)
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await ctx.send(embed=aboutEmbed)
-		
+
 
 def setup(client):
 	client.add_cog(Info(client))
