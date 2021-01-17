@@ -10,7 +10,9 @@ class CodeHelp(commands.Cog):
     def __init__(self,client):
         self.client = client
     
-    @commands.command('ask', help='ask a questions ')
+    @commands.command(name = 'ask',
+        aliases = ['get', 'getcode'],
+        help = 'Fetch code from CodeGrepper, Takes in No. of results (default 3) and the question.')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 3, *, term: str=None):
         if term!=None:
             googlequery=term
@@ -20,7 +22,7 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
-            
+            embedColour = random.randint(0, 0xffffff)
 
             embed = discord.Embed(
                 title ="You asked",
