@@ -31,10 +31,10 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game("with points | ?help"))
+	await client.change_presence(activity=discord.Game(name="with gifts | ?help"))
 
 if __name__ == '__main__':
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp'} 
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule'} 
 	for extension in extensions:
 		try:
 			client.load_extension(extension)

@@ -66,6 +66,19 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
+			
+	@commands.command(name='slap', help="Slap the mentioned user I guess.")
+	@commands.cooldown(1, 300, commands.BucketType.user)
+	async def slap(self, ctx, target : discord.Member = None, *, reason = "none"):
+		title = "{} just slapped everyone!".format(ctx.author.name) if target == None else "{} is slapping {} !".format(ctx.author.name, target.name)
+		description = "Be ready!" if reason == "none" else "Be Ready!\n**Reason:** {}".format(reason)
+		url = 'https://res.cloudinary.com/zeusabhijeet/image/upload/v1608491339/SleepBot/Fun%20Commands/slap.gif'
+		await self.fun_command_embed(ctx, title, description, url)
+	@slap.error
+	async def slap_error(self, ctx, error):
+		if isinstance(error, commands.CommandOnCooldown):
+			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
+			await ctx.send(embed = embed)
 	
 	@commands.command(name='flip', aliases=['flipacoin', 'coinflip'], help='Flip a coin for you')
 	async def flip_coin(self,ctx):

@@ -98,10 +98,6 @@ class CodeHelp(commands.Cog):
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
-                    source=" "
-                    source=j['source_url']
-                    print(source,"source")
-                    answer=f'```{lang}\n {ans}```'
                     answerEmbed=discord.Embed(
                         # name="name",
                         description=answer,
