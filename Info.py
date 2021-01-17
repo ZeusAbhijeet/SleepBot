@@ -81,7 +81,7 @@ print("Hello World!")
 			menu.allow_multisession()
 			await menu.open()
 	
-	@commands.command(name='beforeyouask', help="Gives an explaination on what to do before asking a question")
+	@commands.command(name='beforeyouask', help="Gives an explanation on what to do before asking a question")
 	async def beforeyouask(self, ctx, target: discord.Member = None):
 		embed = discord.Embed(title = "Before You Ask",
 			description = "Before you ask a question, make sure you do the following:",
