@@ -14,6 +14,7 @@ class CodeHelp(commands.Cog):
         aliases = ['get', 'getcode'],
         help = 'Fetch code from CodeGrepper, Takes in No. of results (default 3) and the question.')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 3, *, term: str=None):
+        embedColour = random.randint(0, 0xffffff)
         if term!=None:
             googlequery=term
             q=googlequery.replace(" ","+")
@@ -22,13 +23,13 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
-            embedColour = random.randint(0, 0xffffff)
 
-            embed = discord.Embed(
+            startEmbed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
                 colour=embedColour
-            )           
+            )       
+            startEmbed.set_author(name=ctx.message.author,icon_url=ctx.message.author.avatar_url)
              # print(term)
             results=[]
             async with aiohttp.ClientSession() as session:
@@ -51,11 +52,42 @@ class CodeHelp(commands.Cog):
                     ''',
                     colour=embedColour
                 )
-                await ctx.send(embed=embed)
+                await ctx.send(embed=startEmbed)
                 await ctx.send(embed=notFoundEmbed)
                 pass
+            elif len(result)==1:
+                await ctx.send(embed=startEmbed)
+                data=results
+                resultList = []
+                for i in range(len(data)):
+                    # print(i)
+                    # print(i['answer'])
+                    if i >= result_limit :
+                        break
+                    j=data[i]
+                    ans = j['answer']
+                    lang =j['language']
+                    source=" "
+                    source=j['source_url']
+                    print(source,"source")
+                    answer=f'```{lang}\n {ans}```'
+                    answerEmbed=discord.Embed(
+                        # name="name",
+                        description=answer,
+                        colour=embedColour
+                    )
+                notGotEmbed=discord.Embed(
+                title=":frowning2: Did Not Find Your Answer?",
+                description=f'''[Search yourself]({searchurl})
+                \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
+                ''',
+                colour=embedColour
+                )
+                await ctx.send(embed=answerEmbed)
+                await ctx.send(embed=notGotEmbed)                    
+                
             elif len(results)>0:
-                await ctx.send(embed=embed)
+                await ctx.send(embed=startEmbed)
                 data=results
                 resultList = []
                 for i in range(len(data)):
