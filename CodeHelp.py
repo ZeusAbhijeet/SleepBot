@@ -43,7 +43,7 @@ class CodeHelp(commands.Cog):
                 )
             # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
-            
+            print(len(results))
             if len(results)<1:
                 notFoundEmbed=discord.Embed(
                     title="Answer Not Found",
@@ -55,7 +55,8 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=startEmbed)
                 await ctx.send(embed=notFoundEmbed)
                 pass
-            elif len(result)==1:
+            elif len(results)==1:
+                print(len(results))
                 await ctx.send(embed=startEmbed)
                 data=results
                 resultList = []
@@ -86,7 +87,7 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=answerEmbed)
                 await ctx.send(embed=notGotEmbed)                    
                 
-            elif len(results)>0:
+            elif len(results)>=2:
                 await ctx.send(embed=startEmbed)
                 data=results
                 resultList = []
@@ -98,6 +99,10 @@ class CodeHelp(commands.Cog):
                     j=data[i]
                     ans = j['answer']
                     lang =j['language']
+                    source=" "
+                    source=j['source_url']
+                    print(source,"source")
+                    answer=f'```{lang}\n {ans}```'
                     answerEmbed=discord.Embed(
                         # name="name",
                         description=answer,
@@ -121,6 +126,7 @@ class CodeHelp(commands.Cog):
                 menu.show_skip_buttons()
                 menu.allow_multisession()
                 await menu.open()
+                print('menu opened')
                 await ctx.send(embed=notGotEmbed)
             else:
                 pass
