@@ -18,7 +18,7 @@ class Info(commands.Cog):
 		embed.set_footer(text=f'Requested by {ctx.author}')
 		await ctx.send(embed=embed)
 	
-	@commands.command(name='howtoask', help='Gives an explaination on how to ask a question')
+	@commands.command(name='howtoask', help='Gives an explanation on how to ask a question')
 	async def howtoask(self, ctx, page = 0, target: discord.Member = None):
 		embedcolour = random.randint(0, 0xffffff)
 		helpEmbed = discord.Embed(title = "How to ask",
@@ -81,7 +81,7 @@ print("Hello World!")
 			menu.allow_multisession()
 			await menu.open()
 	
-	@commands.command(name='beforeyouask', help="Gives an explaination on what to do before asking a question")
+	@commands.command(name='beforeyouask', help="Gives an explanation on what to do before asking a question")
 	async def beforeyouask(self, ctx, target: discord.Member = None):
 		embed = discord.Embed(title = "Before You Ask",
 			description = "Before you ask a question, make sure you do the following:",
