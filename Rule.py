@@ -69,14 +69,6 @@ Discord ToS: https://discord.com/guidelines \n
 **To clarify what spam means :**
 Sending 5 or more messages that are repeated or do not contribute to the conversation can be flagged as spam. Sending emotes is fine but sending singular emotes continuously 4 times in a row can be considered spam.
 
-**Members of Staff** :
- The following people are part of the staff team :
-  __Server Designers/Admins__ : 
-   Curious Harish: <@!580327337128755201>\nZeusAbhijeet: <@!515097702057508882>\nVicky: <@!715136706575073300>\nManav: <@!697431403314544670>\nShreyans: <@!486042263076470806>
-   Arya: <@!377443272630730755>\nAtul: <@!729200780577472584>\nViraj: <@!494834222771732481>
-
-  __Moderators__ : 
-   AgentP: <@!247326727460618240>\nAnonymous: <@!756189504007831577>\nSuhas: <@!539152277991063562>\nBhavika: <@!714109178620149811>\nYash: <@!741278765438730241>
 """
 
 		msg = await chnl.send(embed = discord.Embed(

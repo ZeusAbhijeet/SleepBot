@@ -18,6 +18,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Adding Intents
 intents = discord.Intents.default()
 intents.members = True
+intents.guilds = True
 
 # Setting Prefix
 client = commands.Bot(command_prefix = ['?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))

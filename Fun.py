@@ -103,8 +103,15 @@ class Fun(commands.Cog):
 			pfp_url = ctx.message.author.avatar_url
 			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 		else:
-			pfp_url = target.avatar_url
-			embed.set_author(name=target, icon_url=target.avatar_url)
+			if target != ctx.message.author:
+				NotAllowedembed = discord.Embed(title = "Avatar",
+					description = "**You do not have permission to search someone else's profile picture!**",
+					colour = random.randint(0, 0xffffff))
+				await ctx.send(embed = NotAllowedembed)
+				return
+			else:
+				pfp_url = target.avatar_url
+				embed.set_author(name=target, icon_url=target.avatar_url)
 		embed.set_image(url=pfp_url)
 		embed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await ctx.send(embed=embed)
