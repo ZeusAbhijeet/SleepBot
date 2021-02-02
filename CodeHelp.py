@@ -1,15 +1,19 @@
+# importing important libraries required
 import discord
-import random 
+# for embedColour
+import random
 from discord.ext import commands
+# for menus
 from dpymenus import Page, PaginatedMenu
+# for getting answers from codegrepper
 import aiohttp
-import typing 
+import typing
 import json
 
 class CodeHelp(commands.Cog):
     def __init__(self,client):
         self.client = client
-    
+
     @commands.command(name = 'ask',
         aliases = ['get', 'getcode'],
         help = 'Fetch code from CodeGrepper, Takes in No. of results (default 3) and the question.')
@@ -23,20 +27,22 @@ class CodeHelp(commands.Cog):
             originurl='https://www.codegrepper.com/search.php?q='+cq
             # print(searchurl,q)
 
-
+            # The initial embed which shows what you searched for
             startEmbed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
                 colour=embedColour
-            )       
+            )
             startEmbed.set_author(name=ctx.message.author,icon_url=ctx.message.author.avatar_url)
-             # print(term)
+            # print(term)
+            # List which will contain the results
             results=[]
+            # fetch results from codegrepper
             async with aiohttp.ClientSession() as session:
                 async with session.get('https://www.codegrepper.com/api/search.php', params ={"q":term}) as r :
                     result = await r.json()
                 results=result['answers']
-                
+
                 answerEmbed=discord.Embed(
                     title='Answers',
                     colour=embedColour
@@ -44,6 +50,7 @@ class CodeHelp(commands.Cog):
             # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
             print(len(results))
+            # If less than 1 result stored, send notFoundEmbed
             if len(results)<1:
                 notFoundEmbed=discord.Embed(
                     title="Answer Not Found",
@@ -54,7 +61,7 @@ class CodeHelp(commands.Cog):
                 )
                 await ctx.send(embed=startEmbed)
                 await ctx.send(embed=notFoundEmbed)
-                pass
+            # if there is exactly 1 result, send directly instead of using pages
             elif len(results)==1:
                 print(len(results))
                 await ctx.send(embed=startEmbed)
@@ -85,8 +92,8 @@ class CodeHelp(commands.Cog):
                 colour=embedColour
                 )
                 await ctx.send(embed=answerEmbed)
-                await ctx.send(embed=notGotEmbed)                    
-                
+                await ctx.send(embed=notGotEmbed)
+            # if more than or equal to 2 results, make multiple embeds and send a menu
             elif len(results)>=2:
                 await ctx.send(embed=startEmbed)
                 data=results
@@ -108,6 +115,7 @@ class CodeHelp(commands.Cog):
                         description=answer,
                         colour=embedColour
                     )
+                    # add the embed to resultList
                     resultList.append(answerEmbed)
                     #await ctx.send(embed=answerEmbed)
                 notGotEmbed=discord.Embed(
@@ -117,6 +125,7 @@ class CodeHelp(commands.Cog):
                 ''',
                 colour=embedColour
                 )
+                # page related stuff
                 menu = PaginatedMenu(ctx)
                 menu.add_pages(resultList)
                 menu.set_timeout(30)
@@ -130,12 +139,12 @@ class CodeHelp(commands.Cog):
                 await ctx.send(embed=notGotEmbed)
             else:
                 pass
-           
-        else:  
+        # if no argument is passed
+        else:
             noargEmbed=discord.Embed(
                     title="Ask Something, it can't be blank",
                     description='''
-                    something expected 
+                    something expected
                     `?ask what you want to ask`
                     ''',
                     colour=embedColour

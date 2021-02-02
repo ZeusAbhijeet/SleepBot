@@ -34,8 +34,11 @@ async def on_ready():
 		print(f'Guild ID: {server.id}')
 	await client.change_presence(activity=discord.Game(name="with coins | ?help"))
 
+# To load all the cogs
 if __name__ == '__main__':
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule'} 
+	# cog list
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule'}
+	# Trying to load cogs
 	for extension in extensions:
 		try:
 			client.load_extension(extension)
