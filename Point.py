@@ -49,7 +49,8 @@ class Point(commands.Cog):
 	async def coins_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
-	
+		else:
+			raise error
 	@commands.command(name='top', 
 		aliases=['leaderboard', 'all_coins', 'all_points', 'lb'], 
 		help="Shows the top 20 users in leaderboard.")
@@ -67,7 +68,8 @@ class Point(commands.Cog):
 		total_point.reverse()
 		embed = discord.Embed(title = "Coins Leaderboard",
 			description = "Top Coins Since Last Reset.",
-			colour = random.randint(0,0xffffff)
+			colour = random.randint(0,0xffffff),
+			timestamp=ctx.message.created_at
 			)
 		for user in total_point:
 			username = self.client.get_user(int(user[0]))
@@ -82,6 +84,7 @@ class Point(commands.Cog):
 	async def top_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
-
+		else:
+			raise error
 def setup(client):
 	client.add_cog(Point(client))
