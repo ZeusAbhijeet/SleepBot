@@ -74,9 +74,7 @@ Sending 5 or more messages that are repeated or do not contribute to the convers
 
 		msg = await chnl.send(embed = discord.Embed(
                 description = rule_message3,
-                colour = color,
-				timestamp=ctx.message.created_at)
-                )
+                colour = color))
 		await msg.add_reaction("\U0001F4DD")
 	
 	@commands.Cog.listener()
