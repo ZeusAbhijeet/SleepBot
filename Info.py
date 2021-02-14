@@ -13,8 +13,10 @@ class Info(commands.Cog):
 	async def ping(self, ctx):
 		embed=discord.Embed(title='Pong!', 
 			description=f'Ping = {round(self.client.latency * 1000)}ms', 
-			colour=random.randint(0,0xffffff)
+			colour=random.randint(0,0xffffff),
+			timestamp=ctx.message.created_at
 		)
+		embed.add_field(name="That means I respond in ", value=f"{round(self.client.latency * 1000)} milliseconds")
 		embed.set_footer(text=f'Requested by {ctx.author}')
 		await ctx.send(embed=embed)
 	
@@ -23,7 +25,8 @@ class Info(commands.Cog):
 		embedcolour = random.randint(0, 0xffffff)
 		helpEmbed = discord.Embed(title = "How to ask",
 				description = "Here is a short explanation on how you should ask a question efficiently:",
-				colour = embedcolour
+				colour = embedcolour,
+				timestamp=ctx.message.created_at
 		)
 		helpEmbed.set_thumbnail(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1607099122/SleepBot/Info%20Commands/ask_question.png")
 		if target != None:
@@ -36,7 +39,8 @@ class Info(commands.Cog):
 		helpEmbed1 = discord.Embed(title = "Asking a Code Related Question",
 			description="""To ask a question on a code, refrain from sending screenshots or photos of the code as they are usually barely visible.
 			Here are two ways you can share your code:""",
-			colour = embedcolour)
+			colour = embedcolour,
+			timestamp=ctx.message.created_at)
 		helpEmbed1.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607100500/SleepBot/Info%20Commands/howtoask_code.png')
 		helpEmbed1.add_field(name="1. Use an Online Code Sharing Service",
 			value="""
@@ -85,7 +89,8 @@ print("Hello World!")
 	async def beforeyouask(self, ctx, target: discord.Member = None):
 		embed = discord.Embed(title = "Before You Ask",
 			description = "Before you ask a question, make sure you do the following:",
-			colour = random.randint(0, 0xffffff)
+			colour = random.randint(0, 0xffffff),
+			timestamp=ctx.message.created_at
 		)
 		if target != None:
 			embed.set_author(name=target, icon_url=target.avatar_url)
@@ -119,7 +124,8 @@ print("Hello World!")
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
 			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
-			colour = random.randint(0, 0xffffff))
+			colour = random.randint(0, 0xffffff),
+			timestamp=ctx.message.created_at)
 		aboutEmbed.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607093923/SleepBot/Info%20Commands/SleepBot_Image.png')
 		aboutEmbed.add_field(name="Contributors!",
 			value="""**Thank you to the following people for contributing:**

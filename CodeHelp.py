@@ -10,6 +10,7 @@ import aiohttp
 import typing
 import json
 
+
 class CodeHelp(commands.Cog):
     def __init__(self,client):
         self.client = client
@@ -19,6 +20,7 @@ class CodeHelp(commands.Cog):
         help = 'Fetch code from CodeGrepper, Takes in No. of results (default 3) and the question.')
     async def ask(self,ctx, result_limit: typing.Optional[int] = 3, *, term: str=None):
         embedColour = random.randint(0, 0xffffff)
+        
         if term!=None:
             googlequery=term
             q=googlequery.replace(" ","+")
@@ -31,7 +33,8 @@ class CodeHelp(commands.Cog):
             startEmbed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
-                colour=embedColour
+                colour=embedColour,
+                timestamp=ctx.message.created_at
             )
             startEmbed.set_author(name=ctx.message.author,icon_url=ctx.message.author.avatar_url)
             # print(term)
@@ -45,7 +48,8 @@ class CodeHelp(commands.Cog):
 
                 answerEmbed=discord.Embed(
                     title='Answers',
-                    colour=embedColour
+                    colour=embedColour,
+                    timestamp=ctx.message.created_at
                 )
             # print(len(results),'length')
             # embed.set_footer(text=f'{ctx.message}')
@@ -82,14 +86,16 @@ class CodeHelp(commands.Cog):
                     answerEmbed=discord.Embed(
                         # name="name",
                         description=answer,
-                        colour=embedColour
+                        colour=embedColour,
+                        timestamp=ctx.message.created_at
                     )
                 notGotEmbed=discord.Embed(
                 title=":frowning2: Did Not Find Your Answer?",
                 description=f'''[Search yourself]({searchurl})
                 \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
                 ''',
-                colour=embedColour
+                colour=embedColour,
+                timestamp=ctx.message.created_at
                 )
                 await ctx.send(embed=answerEmbed)
                 await ctx.send(embed=notGotEmbed)
@@ -113,7 +119,8 @@ class CodeHelp(commands.Cog):
                     answerEmbed=discord.Embed(
                         # name="name",
                         description=answer,
-                        colour=embedColour
+                        colour=embedColour,
+                        timestamp=ctx.message.created_at
                     )
                     # add the embed to resultList
                     resultList.append(answerEmbed)
@@ -123,7 +130,8 @@ class CodeHelp(commands.Cog):
                 description=f'''[Search yourself]({searchurl})
                 \nYou can also contribute to this by installing [codegrepper](https://www.codegrepper.com/) extension and marking an answer when you find it
                 ''',
-                colour=embedColour
+                colour=embedColour,
+                timestamp=ctx.message.created_at
                 )
                 # page related stuff
                 menu = PaginatedMenu(ctx)
@@ -147,7 +155,8 @@ class CodeHelp(commands.Cog):
                     something expected
                     `?ask what you want to ask`
                     ''',
-                    colour=embedColour
+                    colour=embedColour,
+                    timestamp=ctx.message.created_at
                 )
             await ctx.send(embed=noargEmbed)
         # await ctx.send(answer)

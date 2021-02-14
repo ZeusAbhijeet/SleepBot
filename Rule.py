@@ -25,7 +25,8 @@ class Rule(commands.Cog):
 		conn.close()
 		await ctx.send(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
 			description = "**{}.** {}".format(rule[0],rule[1]),
-			colour = random.randint(0,0xffffff)))
+			colour = random.randint(0,0xffffff),
+			timestamp=ctx.message.created_at))
 	
 	@commands.command(name = 'rule_begins',
 				aliases = ['rule_begin','rb'])
@@ -73,8 +74,7 @@ Sending 5 or more messages that are repeated or do not contribute to the convers
 
 		msg = await chnl.send(embed = discord.Embed(
                 description = rule_message3,
-                colour = color)
-                )
+                colour = color))
 		await msg.add_reaction("\U0001F4DD")
 	
 	@commands.Cog.listener()
