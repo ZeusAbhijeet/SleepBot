@@ -149,7 +149,7 @@ print("Hello World!")
 			value="""**Thank you to the following people for contributing:**
 				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)
 				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)
-				5. [YogPanjarale](https://github.com/YogPanjarale)\n5. [AmayWale](https://github.com/AmeyWale)""",
+				5. [YogPanjarale](https://github.com/YogPanjarale)\n6. [AmayWale](https://github.com/AmeyWale)""",
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
@@ -171,7 +171,7 @@ print("Hello World!")
 			value="""**Thank you to the following people for contributing:**
 				1. [itsCharmander](https://github.com/itsCharmander)\n2. [AryaKesharwani](https://github.com/AryaKesharwani)
 				3. [parthivpatel1106](https://github.com/parthivpatel1106)\n4. [Zircoz](https://github.com/Zircoz)
-				5. [YogPanjarale](https://github.com/YogPanjarale)\n5. [AmayWale](https://github.com/AmeyWale)""",
+				5. [YogPanjarale](https://github.com/YogPanjarale)\n6. [AmayWale](https://github.com/AmeyWale)""",
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
