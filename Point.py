@@ -37,13 +37,14 @@ class Point(commands.Cog):
 			await ctx.send("Mention a user to check points.")
 			return
 		else:
+			msg = await ctx.send(embed = Util.loading_embed)
 			if not (target.id in total_point):
 				total_point[target.id] = 0
 			embed = discord.Embed(title = "User {}'s Coins".format(target.name),
 				description = "{} has {} coins since reset.".format(target.name,total_point[target.id]),
 				colour = random.randint(0,0xffffff)
 				)
-			await ctx.send(embed = embed)
+			await msg.edit(embed = embed)
 			return
 	@coins.error
 	async def coins_error(self, ctx, error):
@@ -57,6 +58,7 @@ class Point(commands.Cog):
 	@Util.is_point_cmd_chnl()
 	async def top(self, ctx):
 		await Util.command_log(self.client, ctx, "top")
+		msg = await ctx.send(embed = Util.loading_embed)
 		total_point = dict(Util.POINT)
 		for user in Util.DB_POINT:
 			if user[0] in total_point:
@@ -79,7 +81,7 @@ class Point(commands.Cog):
 			top_20 += 1
 			if top_20 == 21:
 				break
-		await ctx.send(embed = embed)
+		await msg.edit(embed = embed)
 	@top.error
 	async def top_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):

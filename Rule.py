@@ -23,7 +23,8 @@ class Rule(commands.Cog):
 		c = conn.cursor()
 		rule = c.execute("SELECT * FROM rule_table WHERE db_ID = {};".format(rule)).fetchone()
 		conn.close()
-		await ctx.send(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
+		msg = await ctx.send(embed = Util.loading_embed)
+		await msg.edit(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
 			description = "**{}.** {}".format(rule[0],rule[1]),
 			colour = random.randint(0,0xffffff),
 			timestamp=ctx.message.created_at))

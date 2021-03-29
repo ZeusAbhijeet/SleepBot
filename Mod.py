@@ -43,6 +43,7 @@ class Mod(commands.Cog):
 		msgList = []
 		if amount > 100 or amount < 1:
 			return await ctx.send("Enter a number between 0 and 100")
+		embed_msg = await ctx.send(embed = discord.Embed(description="<a:bot_loading:809318632723185714> Clearing out **{}** emotes...".format(amount)))
 		async for msg in ctx.channel.history(limit=1000):
 			if amount <= 0:
 				break
@@ -54,7 +55,7 @@ class Mod(commands.Cog):
 		embed = discord.Embed(title = 'Delete Emotes',
 				description = "Deleted **{}/{}** emotes!".format(deleted, saveamount),
 				colour = random.randint(0,0xffffff))
-		await ctx.send(embed = embed, delete_after = 5)
+		await embed_msg.edit(embed = embed, delete_after = 5)
 	@clearemote.error
 	async def clearemote_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
@@ -73,6 +74,7 @@ class Mod(commands.Cog):
 		msgList = []
 		if amount > 100 or amount < 0:
 			return await ctx.send("Enter a number between 0 and 100")
+		embed_msg = await ctx.send(embed = discord.Embed(description="<a:bot_loading:809318632723185714> Deleting **{}** messages sent by <@!{}>...".format(amount, target.id)))
 		async for msg in ctx.channel.history(limit = 1000):
 			if amount <= 0:
 				break
@@ -84,7 +86,7 @@ class Mod(commands.Cog):
 		embed = discord.Embed(title = 'Delete Messages', 
 			description = "Deleted **{}/{}** messages".format(deleted,saveamount),
 			colour = random.randint(0, 0xffffff))
-		await ctx.send(embed = embed, delete_after = 5)
+		await embed_msg.edit(embed = embed, delete_after = 5)
 	@clearuser.error
 	async def clearuser_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
@@ -106,6 +108,7 @@ class Mod(commands.Cog):
 			return await ctx.send("Enter a number between 0 and 100")
 		if txt[0] == '^':
 			onlyStart = True
+		embed_msg = await ctx.send(embed = discord.Embed(description="<a:bot_loading:809318632723185714> Deleting **{}** messages containing '**{}**'...".format(amount, txt)))
 		async for msg in ctx.channel.history(limit = 1000):
 			if amount <= 0:
 				break
@@ -121,7 +124,7 @@ class Mod(commands.Cog):
 		embed = discord.Embed(title = 'Delete Messages', 
 			description = "Deleted **{}/{}** messages".format(deleted,saveamount),
 			colour = random.randint(0, 0xffffff))
-		await ctx.send(embed = embed, delete_after = 5)
+		await embed_msg.edit(embed = embed, delete_after = 5)
 	@clearonly.error
 	async def clearonly_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):

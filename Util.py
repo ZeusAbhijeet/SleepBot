@@ -28,6 +28,10 @@ RULE_CHNL = c.fetchone()
 POINTCMD = int(POINTCMD[0])
 RULE_CHNL = int(RULE_CHNL[0])
 
+loading_embed = discord.Embed(description="<a:bot_loading:809318632723185714> loading...")
+
+guild_ids = [740589508365385839]
+
 def is_point_cmd_chnl():
     def predicate(ctx):
         return int(ctx.channel.id) == int(POINTCMD)
@@ -91,4 +95,3 @@ async def command_log(client, ctx, cmd_name):
 	embed.add_field(name = "Time:", value = "{}".format(datetime.now()), inline = False)
 
 	await client.get_channel(LOG[0]).send(embed = embed)
-

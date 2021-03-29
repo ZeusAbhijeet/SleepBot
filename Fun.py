@@ -1,5 +1,6 @@
 import discord
 import random
+import Util
 from discord.ext import commands
 
 class Fun(commands.Cog):
@@ -107,7 +108,12 @@ class Fun(commands.Cog):
 	
 	@commands.command(name='avatar', aliases=['av','profile', 'pfp'], help='Sends the Avatar of the Mentioned User. If no one is mentioned then sends the Avatar of the Author.')
 	async def avatar(self, ctx, *, target: discord.Member = None):
+<<<<<<< Updated upstream
 		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff),timestamp=ctx.message.created_at)
+=======
+		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff))
+		msg = await ctx.send(embed = Util.loading_embed)
+>>>>>>> Stashed changes
 		if target == None:
 			pfp_url = ctx.message.author.avatar_url
 			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
@@ -116,14 +122,14 @@ class Fun(commands.Cog):
 				NotAllowedembed = discord.Embed(title = "Avatar",
 					description = "**You do not have permission to search someone else's profile picture!**",
 					colour = random.randint(0, 0xffffff))
-				await ctx.send(embed = NotAllowedembed)
+				await msg.edit(embed = NotAllowedembed)
 				return
 			else:
 				pfp_url = target.avatar_url
 				embed.set_author(name=target, icon_url=target.avatar_url)
 		embed.set_image(url=pfp_url)
 		embed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
-		await ctx.send(embed=embed)
+		await msg.edit(embed=embed)
 	
 def setup(client):
 	client.add_cog(Fun(client))

@@ -10,6 +10,7 @@ from pretty_help import PrettyHelp
 from dotenv import load_dotenv
 from itertools import cycle
 from datetime import datetime
+from discord_slash import SlashCommand
 
 # Getting Token from .env file
 load_dotenv()
@@ -22,6 +23,7 @@ intents.guilds = True
 
 # Setting Prefix
 client = commands.Bot(command_prefix = ['?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))
+slash = SlashCommand(client, sync_commands=True)
 
 #Startup routine
 @client.event
@@ -32,13 +34,10 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game(name="with coins | ?help"))
+	await client.change_presence(activity=discord.Game(name="Wear a mask | ?help"))
 
-# To load all the cogs
 if __name__ == '__main__':
-	# cog list
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule'}
-	# Trying to load cogs
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study'} 
 	for extension in extensions:
 		try:
 			client.load_extension(extension)

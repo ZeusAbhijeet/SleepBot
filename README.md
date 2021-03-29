@@ -6,7 +6,7 @@ Though this bot is intended to be used only on the Clinify.in Discord Server, yo
 
 ## Dependancies
 
-This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
+This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/), [discord-py-slash-command 1.1.0](https://pypi.org/project/discord-py-slash-command/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
 
 ## How to host the bot
 
@@ -26,7 +26,13 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
-27 Jan 2020:
+29 Mar 2021:
+
+1. Added Study.py
+2. Added Welcome.py
+3. Added new Slash Commands
+
+27 Jan 2021:
 
 This changelog contains changelog of a few previous commits that I forgot to document because I am too lazy.
 
