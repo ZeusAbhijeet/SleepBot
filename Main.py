@@ -10,6 +10,7 @@ from pretty_help import PrettyHelp
 from dotenv import load_dotenv
 from itertools import cycle
 from datetime import datetime
+from discord_slash import SlashCommand
 
 # Getting Token from .env file
 load_dotenv()
@@ -18,9 +19,11 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Adding Intents
 intents = discord.Intents.default()
 intents.members = True
+intents.guilds = True
 
 # Setting Prefix
 client = commands.Bot(command_prefix = ['?'], case_insensitive=True, intents = intents, help_command=PrettyHelp(active=60))
+slash = SlashCommand(client, sync_commands=True)
 
 #Startup routine
 @client.event
@@ -31,10 +34,10 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game(name="with gifts | ?help"))
+	await client.change_presence(activity=discord.Game(name="Wear a mask | ?help"))
 
 if __name__ == '__main__':
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule'} 
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study'} 
 	for extension in extensions:
 		try:
 			client.load_extension(extension)
@@ -93,6 +96,7 @@ async def logout(ctx):
 async def logout_error(ctx, error):
 	if isinstance(error, commands.MissingRole):
 		await ctx.send(f'You do not have permission to run this command!')
-
+	else:
+		raise error
 
 client.run(TOKEN)

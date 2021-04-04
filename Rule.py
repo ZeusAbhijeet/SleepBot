@@ -23,9 +23,11 @@ class Rule(commands.Cog):
 		c = conn.cursor()
 		rule = c.execute("SELECT * FROM rule_table WHERE db_ID = {};".format(rule)).fetchone()
 		conn.close()
-		await ctx.send(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
+		msg = await ctx.send(embed = Util.loading_embed)
+		await msg.edit(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
 			description = "**{}.** {}".format(rule[0],rule[1]),
-			colour = random.randint(0,0xffffff)))
+			colour = random.randint(0,0xffffff),
+			timestamp=ctx.message.created_at))
 	
 	@commands.command(name = 'rule_begins',
 				aliases = ['rule_begin','rb'])
@@ -69,20 +71,11 @@ Discord ToS: https://discord.com/guidelines \n
 **To clarify what spam means :**
 Sending 5 or more messages that are repeated or do not contribute to the conversation can be flagged as spam. Sending emotes is fine but sending singular emotes continuously 4 times in a row can be considered spam.
 
-**Members of Staff** :
- The following people are part of the staff team :
-  __Server Designers/Admins__ : 
-   Curious Harish: <@!580327337128755201>\nZeusAbhijeet: <@!515097702057508882>\nVicky: <@!715136706575073300>\nManav: <@!697431403314544670>\nShreyans: <@!486042263076470806>
-   Arya: <@!377443272630730755>\nAtul: <@!729200780577472584>\nViraj: <@!494834222771732481>
-
-  __Moderators__ : 
-   AgentP: <@!247326727460618240>\nAnonymous: <@!756189504007831577>\nSuhas: <@!539152277991063562>\nBhavika: <@!714109178620149811>\nYash: <@!741278765438730241>
 """
 
 		msg = await chnl.send(embed = discord.Embed(
                 description = rule_message3,
-                colour = color)
-                )
+                colour = color))
 		await msg.add_reaction("\U0001F4DD")
 	
 	@commands.Cog.listener()

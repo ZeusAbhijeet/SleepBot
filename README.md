@@ -6,7 +6,7 @@ Though this bot is intended to be used only on the Clinify.in Discord Server, yo
 
 ## Dependancies
 
-This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
+This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/), [discord-py-slash-command 1.1.0](https://pypi.org/project/discord-py-slash-command/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
 
 ## How to host the bot
 
@@ -26,26 +26,37 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+29 Mar 2021:
+
+1. Added Study.py
+2. Added Welcome.py
+3. Added new Slash Commands
+
+27 Jan 2021:
+
+This changelog contains changelog of a few previous commits that I forgot to document because I am too lazy.
+
+1. Fix an issue wherein ?ask would not work if there is only one result (Credits: [YogPanjarale](https://github.com/YogPanjarale)).
+2. Add `intent.guilds`.
+3. Changes to rule_begins command.
+4. Removed ability to fetch other user's avatar due to complaints from users.
+
 30 Dec 2020:
 
 Probably the last update of the year.
 
 1. Added new cog: Rule.
-
 2. Added new command: rule_begins.
-
 3. rule_lookup has now been added to Rule cog instead.
 
 29 Dec 2020:
 
 1. Added alias for top command: 'lb'.
-
 2. 'top' command no longer shows users who have left the server.
 
 13 Dec 2020:
 
 1. 'ask' and 'howtoask' commands now use menus to display multiple items.
-
 2. Fixed typos in 'ask' command.
 
 12 Dec 2020:
