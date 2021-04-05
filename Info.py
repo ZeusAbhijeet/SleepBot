@@ -30,14 +30,8 @@ class Info(commands.Cog):
 			colour=random.randint(0,0xffffff),
 			timestamp=ctx.message.created_at
 		)
-<<<<<<< Updated upstream
-		embed.add_field(name="That means I respond in ", value=f"{round(self.client.latency * 1000)} milliseconds")
-		embed.set_footer(text=f'Requested by {ctx.author}')
-		await ctx.send(embed=embed)
-=======
 		ping_embed.set_footer(text=f'Requested by {ctx.author}')
 		await msg.edit(embed=ping_embed)
->>>>>>> Stashed changes
 	
 	@commands.command(name='howtoask', help='Gives an explanation on how to ask a question')
 	async def howtoask(self, ctx, page = 0, target: discord.Member = None):

@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from itertools import cycle
 from datetime import datetime
 from discord_slash import SlashCommand
-
+from Announce.Announce import update
 # Getting Token from .env file
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -37,7 +37,7 @@ async def on_ready():
 	await client.change_presence(activity=discord.Game(name="Wear a mask | ?help"))
 
 if __name__ == '__main__':
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study'} 
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study','Announce.Announce'} 
 	for extension in extensions:
 		try:
 			client.load_extension(extension)
@@ -46,6 +46,8 @@ if __name__ == '__main__':
 			print(f'Failed to load Cog {extension}. Reason: {error}')
 	# For taking backup of DB
 	client.loop.create_task(Util.Backup(client))
+	asyncio.ensure_future(update())
+	print(f'Youtube Video Notifier Ensured')
 
 # The following commands will be used to load Cogs
 # They are locked behind a has_role check which requires the user to have the "SleepBot Admin" role
