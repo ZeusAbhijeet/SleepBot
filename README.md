@@ -8,6 +8,16 @@ Though this bot is intended to be used only on the Clinify.in Discord Server, yo
 
 This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/), [discord-py-slash-command 1.1.0](https://pypi.org/project/discord-py-slash-command/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
 
+### run-
+
+```terminal
+py ./SQLite3_Py.py
+```
+
+```terminal
+pip install discord.py discord-py-slash-command discord-pretty-help dpymenus howdoi pyyaml
+```
+
 ## How to host the bot
 
 1. Edit the i-channel_table.txt file in SQL_CMDS folder as required.

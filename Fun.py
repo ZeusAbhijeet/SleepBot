@@ -108,12 +108,8 @@ class Fun(commands.Cog):
 	
 	@commands.command(name='avatar', aliases=['av','profile', 'pfp'], help='Sends the Avatar of the Mentioned User. If no one is mentioned then sends the Avatar of the Author.')
 	async def avatar(self, ctx, *, target: discord.Member = None):
-<<<<<<< Updated upstream
-		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff),timestamp=ctx.message.created_at)
-=======
 		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff))
 		msg = await ctx.send(embed = Util.loading_embed)
->>>>>>> Stashed changes
 		if target == None:
 			pfp_url = ctx.message.author.avatar_url
 			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)

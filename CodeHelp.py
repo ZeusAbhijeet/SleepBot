@@ -1,11 +1,11 @@
 import discord
 import random 
 from discord.ext import commands
+from howdoi import howdoi
 from dpymenus import Page, PaginatedMenu
 import aiohttp
 import typing 
 import json
-
 
 class CodeHelp(commands.Cog):
     def __init__(self,client):
@@ -29,14 +29,8 @@ class CodeHelp(commands.Cog):
             startEmbed = discord.Embed(
                 title ="You asked",
                 description =f'{term} \n [source]({originurl})',
-<<<<<<< Updated upstream
-                colour=embedColour,
-                timestamp=ctx.message.created_at
-            )
-=======
                 colour=embedColour
             )       
->>>>>>> Stashed changes
             startEmbed.set_author(name=ctx.message.author,icon_url=ctx.message.author.avatar_url)
              # print(term)
             results=[]
@@ -153,6 +147,60 @@ class CodeHelp(commands.Cog):
                     ''',
                     colour=embedColour,
                     timestamp=ctx.message.created_at
+                )
+            await ctx.send(embed=noargEmbed)
+        # await ctx.send(answer)
+
+    @commands.command(name = 'howdoi',
+        help = 'Ask it anything programming related it returns an first answer for that (works well with python), answers for non programing are little unexpected be aware')
+    async def howdoi(self,ctx, result_limit: typing.Optional[int] = 3, *, term: str=None):
+        embedColour = random.randint(0, 0xffffff)
+        if term!=None:
+            answer=howdoi.howdoi(term)
+            if len(answer)<2048:
+                answerEmbed = discord.Embed(
+                    title="Your Answer is :",
+                    description=f'```{answer}```',
+                    color=embedColour
+                )
+                await ctx.send(embed=answerEmbed)
+            elif len(answer)>=2048:
+                await ctx.send('Your answer is too Long')
+                await ctx.send('**Your Answer is** :')
+
+                resultList= remString(answer,2000)
+                i=0
+                for res in resultList:
+                    print(f'{len(res)} len')
+                    if i <1:
+                        answerEmbed = discord.Embed(
+                        title="Your Answer is :",
+                        description=f'```{res}```',
+                        color=embedColour
+                        )
+                    else:
+                        answerEmbed = discord.Embed(
+                        
+                        description=f'```{res}```',
+                        color=embedColour
+                        )
+                    i+=1
+                    await ctx.send(embed=answerEmbed) 
+                i =0
+                # maxLen=2048
+                # a = len(answer) /maxLen
+                # a = int(a)+1
+                # print(a)
+
+                # times = 
+        else:  
+            noargEmbed=discord.Embed(
+                    title="Ask Something, it can't be blank",
+                    description='''
+                    something expected 
+                    `?ask what you want to ask`
+                    ''',
+                    colour=embedColour
                 )
             await ctx.send(embed=noargEmbed)
         # await ctx.send(answer)
