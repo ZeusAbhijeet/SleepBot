@@ -96,7 +96,6 @@ async def logout(ctx):
 async def logout_error(ctx, error):
 	if isinstance(error, commands.MissingRole):
 		await ctx.send(f'You do not have permission to run this command!')
-	else:
-		raise error
+
 
 client.run(TOKEN)

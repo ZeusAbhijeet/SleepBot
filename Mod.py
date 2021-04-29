@@ -29,8 +29,7 @@ class Mod(commands.Cog):
 	async def clear_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
 			await ctx.send(f'You require Manage Messages Permission to run this command.')
-		else:
-			raise error
+
 	@commands.command(name='clearemote',
 		aliases=['purgeemote', 'deleteemote', 'clearemotes', 'purgeemotes', 'deleteemotes'],
 		help='Clears emotes')
@@ -60,8 +59,7 @@ class Mod(commands.Cog):
 	async def clearemote_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
 			await ctx.send(f'You require Manage Messages Permission to run this command.')
-		else:
-			raise error
+	
 	@commands.command(name = 'clearuser',
 		aliases = ['purgeuser', 'cleanuser', 'clearusers', 'purgeusers', 'cleanusers'],
 		help = "Clears messages from mentioned user")
@@ -91,8 +89,7 @@ class Mod(commands.Cog):
 	async def clearuser_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
 			await ctx.send(f'You require Manage Messages Permission to run this command.')
-		else:
-			raise error
+	
 	@commands.command(name = 'clearonly',
 		aliases = ['purgeonly','cleanonly'],
 		help = "Clears messages containing a specific word")
@@ -129,7 +126,6 @@ class Mod(commands.Cog):
 	async def clearonly_error(self, ctx, error):
 		if isinstance(error, commands.MissingPermissions):
 			await ctx.send(f'You require Manage Messages Permission to run this command.')
-		else:
-			raise error
+
 def setup(client):
 	client.add_cog(Mod(client))

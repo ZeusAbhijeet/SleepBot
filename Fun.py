@@ -10,8 +10,7 @@ class Fun(commands.Cog):
 	async def fun_command_embed(self, ctx, title_string, description_string, image_url):
 		embed = discord.Embed(title = title_string,
 			description = description_string,
-			colour = random.randint(0,0xffffff),
-			timestamp=ctx.message.created_at
+			colour = random.randint(0,0xffffff)
 		)
 		embed.set_image(url = image_url)
 		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
@@ -29,8 +28,7 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-		else:
-			raise error
+	
 	@commands.command(name='kick', help="Kick the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def kick(self, ctx, target : discord.Member = None, *, reason = "none"):
@@ -43,8 +41,6 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-		else:
-			raise error
 	
 	@commands.command(name='shoot', help="Shoot the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
@@ -58,8 +54,7 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-		else:
-			raise error
+			
 	@commands.command(name='gib_rose', help="Give a rose to the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
 	async def gib_rose(self, ctx, target : discord.Member = None, *, reason = "none"):
@@ -72,8 +67,6 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-		else:
-			raise error
 			
 	@commands.command(name='slap', help="Slap the mentioned user I guess.")
 	@commands.cooldown(1, 300, commands.BucketType.user)
@@ -87,8 +80,6 @@ class Fun(commands.Cog):
 		if isinstance(error, commands.CommandOnCooldown):
 			embed = discord.Embed(title = "Failed To Run Command", description = "**Reason:** {}".format(error), colour = random.randint(0,0xffffff))
 			await ctx.send(embed = embed)
-		else:
-			raise error
 	
 	@commands.command(name='flip', aliases=['flipacoin', 'coinflip'], help='Flip a coin for you')
 	async def flip_coin(self,ctx):
@@ -101,19 +92,15 @@ class Fun(commands.Cog):
 		description="Coin is in the air and result is..."
 		name = "Result:"
 		value = x
-		embed = discord.Embed(title = title, description = description, colour = random.randint(0, 0xffffff),timestamp=ctx.message.created_at)
+		embed = discord.Embed(title = title, description = description, colour = random.randint(0, 0xffffff))
 		embed.add_field(name = name, value = value)
 		embed.set_footer(text = "Requested by {}".format(ctx.message.author), icon_url = ctx.message.author.avatar_url)
 		await ctx.send(embed = embed)
 	
 	@commands.command(name='avatar', aliases=['av','profile', 'pfp'], help='Sends the Avatar of the Mentioned User. If no one is mentioned then sends the Avatar of the Author.')
 	async def avatar(self, ctx, *, target: discord.Member = None):
-<<<<<<< Updated upstream
-		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff),timestamp=ctx.message.created_at)
-=======
 		embed=discord.Embed(title='Avatar', colour=random.randint(0,0xffffff))
 		msg = await ctx.send(embed = Util.loading_embed)
->>>>>>> Stashed changes
 		if target == None:
 			pfp_url = ctx.message.author.avatar_url
 			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
