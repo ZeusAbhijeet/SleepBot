@@ -26,6 +26,11 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+29 Apr 2021:
+
+1. Added Forest.py
+2. Integrate ClinifyForest API (Credits: [tiluckdave](https://github.com/tiluckdave))
+
 29 Mar 2021:
 
 1. Added Study.py
