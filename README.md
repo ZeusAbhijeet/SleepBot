@@ -26,6 +26,10 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+01 May 2021:
+
+Fix Welcome.py
+
 29 Apr 2021:
 
 1. Added Forest.py

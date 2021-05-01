@@ -22,7 +22,7 @@ class Welcome(commands.Cog):
 					value="If you are new to discord, you can watch a tutorial video which will help you to go about the server.\n**PC tutorial:** [Click here](https://youtu.be/S17_XjFxSsQ)\n**Mobile tutorial:** Coming soon",
 					inline=False)
 		welcomeEmbed.add_field(name="Get Some Roles",
-					value="Get some roles from <#752466815128436826> to change your name colour in server, get notified about announcements, join a club, or get some people to join you while studying.")
+					value="Get some roles from <#829291965379379220> to change your name colour in server, get notified about announcements, join a club, or get some people to join you while studying.")
 		welcomeEmbed.set_image(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1614530857/Clinify%20Stuff/Welcome_Banner.gif')
 		welcomeEmbed.set_author(name=target.name, icon_url=target.avatar_url)
 		return welcomeEmbed
