@@ -26,6 +26,11 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+03 May 2021:
+
+1. Update Welcome.py
+2. Add Announcements.py
+
 01 May 2021:
 
 Fix Welcome.py
