@@ -50,6 +50,8 @@ class Point(commands.Cog):
 	async def coins_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
+		else:
+			await Util.ErrorHandler(ctx, error)
 	
 	@commands.command(name='top', 
 		aliases=['leaderboard', 'all_coins', 'all_points', 'lb'], 
@@ -84,6 +86,8 @@ class Point(commands.Cog):
 	async def top_error(self, ctx, error):
 		if isinstance(error, commands.CheckFailure):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
+		else:
+			await Util.ErrorHandler(ctx, error)
 
 def setup(client):
 	client.add_cog(Point(client))

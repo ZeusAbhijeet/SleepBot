@@ -27,6 +27,9 @@ class Rule(commands.Cog):
 		await msg.edit(embed = discord.Embed(title = "{} Pulled Up A Rule As A Quick Reference!".format(ctx.author.name),
 			description = "**{}.** {}".format(rule[0],rule[1]),
 			colour = random.randint(0,0xffffff)))
+	@rule_lookup.error
+	async def ruleError(self, ctx, error):
+		await Util.ErrorHandler(ctx, error)
 	
 	@commands.command(name = 'rule_begins',
 				aliases = ['rule_begin','rb'])

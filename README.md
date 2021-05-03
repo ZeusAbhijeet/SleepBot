@@ -26,6 +26,10 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Changelogs
 
+03 May 2021 (Another Update):
+
+Errors now show up in chat instead of console.
+
 03 May 2021:
 
 1. Update Welcome.py

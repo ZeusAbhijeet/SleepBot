@@ -25,6 +25,9 @@ class Forest(commands.Cog):
 			Rank = Rank + 1
 		LbEmbed.set_author(name="{}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await msg.edit(embed = LbEmbed)
+	@forest_leaderboard.error
+	async def cflbError(self, ctx, error):
+		await Util.ErrorHandler(ctx, error)
 	
 	@commands.command(name = 'forest_user', aliases = ['fuser', 'fprofile', 'cfuser'], help = "Fetches stats about the user from Clinify Forest.")
 	async def forest_user(self, ctx, TargetUser : discord.Member = None):
@@ -47,6 +50,9 @@ class Forest(commands.Cog):
 		UserEmbed.add_field(name="Level:", value="{}".format(UserInfo["level"]), inline=True)
 		UserEmbed.set_author(name="{}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await msg.edit(embed = UserEmbed)
+	@forest_user.error
+	async def cfuserError(self, ctx, error):
+		Util.ErrorHandler(ctx, error)
 
 def setup(client):
 	client.add_cog(Forest(client))
