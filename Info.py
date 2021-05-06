@@ -171,6 +171,10 @@ print("Hello World!")
 		)
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await ctx.send(embed=aboutEmbed)
+	
+	@commands.command(name="?", aliases = ['??', '???'])
+	async def questionmark(self, ctx):
+		pass
 
 
 def setup(client):

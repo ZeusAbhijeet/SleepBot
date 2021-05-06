@@ -45,9 +45,9 @@ conn.close()
 
 async def ErrorHandler(ctx, error):
 	ErrorEmbed = discord.Embed(title = "An Error Occured :(",
-								description = "The command could not be run. \nㅤ",
+								description = "The command could not be run.",
 								colour = discord.Colour.red())
-	ErrorEmbed.add_field(name= "Reason :", value="{} \nㅤ".format(error), inline = False)
+	ErrorEmbed.add_field(name= "Reason :", value="{}".format(error), inline = False)
 	ErrorEmbed.add_field(name="What to do now?", value= "Try running the command again or report this to <@!515097702057508882>.", inline = False)
 	ErrorEmbed.set_thumbnail(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1620057874/SleepBot/Errors/Error.png")
 	await ctx.send(f':no_entry_sign: **ERROR** :no_entry_sign:', embed = ErrorEmbed)

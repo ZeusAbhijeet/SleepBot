@@ -52,7 +52,7 @@ class Forest(commands.Cog):
 		await msg.edit(embed = UserEmbed)
 	@forest_user.error
 	async def cfuserError(self, ctx, error):
-		Util.ErrorHandler(ctx, error)
+		await Util.ErrorHandler(ctx, error)
 
 def setup(client):
 	client.add_cog(Forest(client))
