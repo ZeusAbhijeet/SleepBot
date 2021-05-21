@@ -87,9 +87,9 @@ Sending 5 or more messages that are repeated or do not contribute to the convers
 			return
 		if payload.user_id == self.client.user.id:
 			return
-		await self.client.http.remove_reaction(payload.channel_id, payload.message_id, payload.emoji, payload.user_id)
-		user = await self.client.get_guild(740589508365385839).fetch_member(payload.user_id)
-		await user.add_roles(self.client.get_guild(740589508365385839).get_role(self.roles))
+		else:
+			user = await self.client.get_guild(740589508365385839).fetch_member(payload.user_id)
+			await user.add_roles(self.client.get_guild(740589508365385839).get_role(self.roles))
 
 def setup(client):
 	client.add_cog(Rule(client))

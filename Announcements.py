@@ -10,8 +10,8 @@ class Announcements(commands.Cog):
 		self.AnnouncementChannelID = 835775311416786945
 	
 	async def AnnouncementEmbed(self, Podcaster, PodcastName, PodcastTopic, PodcastPoster = None):
-		podcastEmbed = discord.Embed(title= "{} by {} is starting soon!".format(PodcastName, Podcaster),
-								description= "Today's topic for the podcast is: \n**{}**. \n\nJoin the <#835775088539336764> Stage channel!\nㅤ".format(PodcastTopic),
+		podcastEmbed = discord.Embed(title= "{} : {} by {} is starting soon!".format(PodcastName, PodcastTopic, Podcaster),
+								description= "Join the <#835775088539336764> Stage channel!\nㅤ".format(PodcastTopic),
 								colour=random.randint(0, 0xffffff))
 		podcastEmbed.add_field(name="Want to Get Notified for Podcasts?", value="Get the Podcast Ping roles for your favourite podcasts (or all of them cuz why not? <:Smirks:757906751063588912>) from <#835775268844339210> or [click here](https://discord.com/channels/740589508365385839/835775268844339210/835813552190783548)")
 		if PodcastPoster != None:

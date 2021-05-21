@@ -6,7 +6,7 @@ Though this bot is intended to be used only on the Clinify.in Discord Server, yo
 
 ## Dependancies
 
-This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/), [discord-py-slash-command 1.1.0](https://pypi.org/project/discord-py-slash-command/) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
+This bot requires the [Discord.py v1.5+ library](https://discordpy.readthedocs.io/), [pretty-help 1.1.2](https://pypi.org/project/discord-pretty-help/), [discord-py-slash-command 1.1.0](https://pypi.org/project/discord-py-slash-command/), [dpytools](https://github.com/chrisdewa/dpytools) and [dpymenus 1.2](https://pypi.org/project/dpymenus/) which can be installed using pip package manager.
 
 ## How to host the bot
 
@@ -25,6 +25,12 @@ DISCORD_TOKEN=Your Token Here
 This bot requires Server Members Intent so make sure to enable that by going to your Discord Application -> Bot -> Privilaged Gateway Intents and enabling Server Members Intent. Without this, bot won't be able to access the cache to get user names.
 
 ## Changelogs
+
+21 May 2021:
+
+1. Changed Ping command
+2. Added slowmode command (requires [dpytools](https://github.com/chrisdewa/dpytools) for some checks and conversion to timedelta)
+3. A few other minor changes
 
 03 May 2021 (Another Update):
 

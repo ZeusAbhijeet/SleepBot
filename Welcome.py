@@ -19,7 +19,7 @@ class Welcome(commands.Cog):
 					value="Read the rules from the <#752804052278050817> channel and react to the rule message with the 📝 emoji.",
 					inline=False)
 		welcomeEmbed.add_field(name="Check out the Server Tutorial Video", 
-					value="If you are new to discord, you can watch a tutorial video which will help you to go about the server.\n**PC tutorial:** [Click here](https://youtu.be/S17_XjFxSsQ)\n**Mobile tutorial:** Coming soon",
+					value="If you are new to discord, you can watch a tutorial video which will help you to go about the server.\n**Tutorial:** [Click here](https://youtu.be/AUimFYOBXYU?t=291)",
 					inline=False)
 		welcomeEmbed.add_field(name="Getting to know you",
 					value="Please fill up this form so that we know your interests and can make the community better! **[Click here](https://forms.gle/5Zhums746RWRcAhu7)**")

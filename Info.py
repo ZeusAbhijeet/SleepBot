@@ -1,5 +1,7 @@
 import discord
 import random
+
+from discord import colour
 import Util
 import sqlite3
 from dpymenus import Page, PaginatedMenu
@@ -25,12 +27,11 @@ class Info(commands.Cog):
 	async def ping(self, ctx):
 		#loading_embed = discord.Embed(description="loading...")
 		msg = await ctx.send(embed = Util.loading_embed)
-		ping_embed=discord.Embed(title='Pong!', 
-			description=f'Ping = {round(self.client.latency * 1000)}ms', 
-			colour=random.randint(0,0xffffff)
-		)
-		ping_embed.set_footer(text=f'Requested by {ctx.author}')
-		await msg.edit(embed=ping_embed)
+		latency_ms = round((msg.created_at.timestamp() - ctx.message.created_at.timestamp()) * 1000, 1)
+		heartbeat_ms = round(ctx.bot.latency * 1000, 1)
+		await msg.edit(embed=discord.Embed(title='Pong!', 
+						description=f"Latency: `{latency_ms}ms`\nHeartbeat: `{heartbeat_ms}ms`\n\nThis isn't important to you tho",
+						colour=random.randint(0, 0xffffff)))
 	
 	@commands.command(name='howtoask', help='Gives an explanation on how to ask a question')
 	async def howtoask(self, ctx, page = 0, target: discord.Member = None):

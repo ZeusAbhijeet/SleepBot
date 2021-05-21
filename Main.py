@@ -34,7 +34,7 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game(name="Wear a mask | ?help"))
+	await client.change_presence(activity=discord.Game(name="Get vaccinated | ?help"))
 
 if __name__ == '__main__':
 	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study', 'Forest', 'Announcements'} 
@@ -91,7 +91,7 @@ async def reload(ctx, extension):
 @commands.has_role("SleepBot Admin")
 async def logout(ctx):
 	await ctx.send("<a:Loading:771266181943918602>Logging Out")
-	await client.logout()
+	await client.close()
 @logout.error
 async def logout_error(ctx, error):
 	if isinstance(error, commands.MissingRole):

@@ -4,6 +4,9 @@ import sqlite3
 import random
 import Util
 from discord.ext import commands
+from dpytools.parsers import to_timedelta, to_lower
+from dpytools.checks import any_of_permissions
+from datetime import datetime
 
 class Mod(commands.Cog):
 	def __init__(self, client):
@@ -134,6 +137,45 @@ class Mod(commands.Cog):
 			await ctx.send(f'You require Manage Messages Permission to run this command.')
 		else:
 			await Util.ErrorHandler(ctx, error)
+	
+	@commands.command(name='slowmode',
+					aliases=['sm'],
+					help="Adds slowmode to channel")
+	@any_of_permissions(administrator=True, manage_messages=True)
+	async def slowmode(self, ctx, SlowmodeDuration : to_timedelta, channel : discord.TextChannel = None):
+		await Util.command_log(self.client, ctx, "slowmode")
+		if channel is None:
+			channel = ctx.channel
+		else: pass
+		
+		def check_message(message):
+			return ((message.author == ctx.author) and (message.channel == ctx.channel))
+		
+		SlowmodeDurationInSeconds = SlowmodeDuration.total_seconds()
+		if SlowmodeDurationInSeconds >= 30.0:
+			msg = await ctx.send(embed = discord.Embed(title = "Are you sure?",
+											description = "Are you sure you want to set slowmode of {}s? (yes/no)".format(SlowmodeDurationInSeconds),
+											colour = discord.Colour.red()))
+			Confirmation = await self.client.wait_for('message', timeout=60.0, check = check_message)
+			if to_lower(Confirmation.content) == 'no':
+				await ctx.send(embed = discord.Embed(title="Command Cancelled",
+											description = "The command was cancelled",
+											colour = discord.Colour.red()),
+								delete_after = 5)
+				await msg.delete()
+				return
+		
+		if SlowmodeDurationInSeconds >= 21600.0:
+			await ctx.send("Cannot set slowmode for more than 6 hours")
+			return
+
+		await channel.edit(slowmode_delay = int(SlowmodeDurationInSeconds))
+		await ctx.send(embed = discord.Embed(title = "Slowmode",
+											description = "Successfully set slowmode to **{}** in {}".format(SlowmodeDuration, channel.mention),
+											colour = discord.Colour.green()))
+	@slowmode.error
+	async def slowmode_error(self, ctx, error):
+		await Util.ErrorHandler(ctx, error)
 
 def setup(client):
 	client.add_cog(Mod(client))
