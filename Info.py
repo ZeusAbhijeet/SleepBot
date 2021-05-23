@@ -152,7 +152,7 @@ print("Hello World!")
 		await ctx.send(embed=aboutEmbed)
 	
 
-	@commands.command(name='about', aliases = ['info'], help='About the bot!')
+	@commands.command(name='about', help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
 			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
@@ -167,13 +167,13 @@ print("Hello World!")
 			inline=False
 		)
 		aboutEmbed.add_field(name="Contribute to SleepBot!", 
-			value="SleepBot is an Open Source bot with it's source code available [here](https://github.com/ZeusAbhijeet/SleepBot). You are free to contribute to it!",
+			value="SleepBot is an Open Source bot with it's source code available [here](https://github.com/Clinify-Open-Sauce/SleepBot). You are free to contribute to it!",
 			inline=False
 		)
 		aboutEmbed.set_footer(text="Requested by {}".format(ctx.message.author), icon_url=ctx.message.author.avatar_url)
 		await ctx.send(embed=aboutEmbed)
 	
-	@commands.command(name="?", aliases = ['??', '???'])
+	@commands.command(name="?", aliases = ['??', '???', '????'])
 	async def questionmark(self, ctx):
 		pass
 
