@@ -1,5 +1,7 @@
 # Clinify Squad's SleepBot
 
+**Note:** Pull Requests will no longer be accepted on this repository. To create a pull request, go to the following repo: https://github.com/Clinify-Open-Sauce/SleepBot. However, this repository will continue to be updated.
+
 Official Bot for the Clinify.in Discord Server written in Python using Discord.py
 
 Though this bot is intended to be used only on the Clinify.in Discord Server, you can self host it in your server to test it out. Installation guide down below.
