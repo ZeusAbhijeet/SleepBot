@@ -1,8 +1,8 @@
-# Clinify Squad's SleepBot
+# BlueLearn's SleepBot
 
-Official Bot for the Clinify.in Discord Server written in Python using Discord.py
+Official Bot for the Bluelearn.in Discord Server written in Python using Discord.py
 
-Though this bot is intended to be used only on the Clinify.in Discord Server, you can self host it in your server to test it out. Installation guide down below.
+Though this bot is intended to be used only on the BlueLearn Discord Server, you can self host it in your server to test it out. Installation guide down below.
 
 ## Dependancies
 
