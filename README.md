@@ -30,6 +30,10 @@ Pull Requests will no longer be accepted on this repository. To create a pull re
 
 ## Changelogs
 
+13 June 2021:
+
+Added new command: study_buddies
+
 21 May 2021:
 
 1. Changed Ping command

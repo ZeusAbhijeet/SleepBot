@@ -6,6 +6,9 @@ import asyncio
 from discord.ext import commands
 
 class Point(commands.Cog):
+	"""
+	Contains commands for checking user's Clinify Coins balance and leaderboard
+	"""
 	def __init__(self, client):
 		self.client = client
 

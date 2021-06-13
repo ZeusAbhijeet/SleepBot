@@ -9,6 +9,9 @@ from dpytools.checks import any_of_permissions
 from datetime import datetime
 
 class Mod(commands.Cog):
+	"""
+	Contains Moderation commands for clearing messages and adding slowmode to a channel
+	"""
 	def __init__(self, client):
 		self.client = client
 

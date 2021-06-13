@@ -9,6 +9,9 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashCommand
 
 class Info(commands.Cog):
+	"""
+	Contains commands giving information about bot's latency and about the bot
+	"""
 	def __init__(self, client):
 		self.client = client
 

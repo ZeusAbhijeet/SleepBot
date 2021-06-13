@@ -34,7 +34,7 @@ async def on_ready():
 	for server in client.guilds:
 		print(f'Guild name: {server.name}')
 		print(f'Guild ID: {server.id}')
-	await client.change_presence(activity=discord.Game(name="Get vaccinated | ?help"))
+	await client.change_presence(activity=discord.Game(name="#BlueLearn"))
 
 if __name__ == '__main__':
 	extensions = {'Info', 'Point', 'Fun', 'Mod', 'CodeHelp', 'Rule', 'Welcome', 'Study', 'Forest', 'Announcements'} 

@@ -1,3 +1,8 @@
+"""
+Contains command for fetching code from CodeGrepper
+"""
+
+
 import discord
 import random 
 from discord.ext import commands

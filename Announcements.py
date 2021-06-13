@@ -5,6 +5,9 @@ import random
 from discord.ext import commands
 
 class Announcements(commands.Cog):
+	"""
+	Contains commands for making annoucements for Clinify Originals
+	"""
 	def __init__(self, client):
 		self.client = client
 		self.AnnouncementChannelID = 835775311416786945

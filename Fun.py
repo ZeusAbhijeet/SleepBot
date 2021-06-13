@@ -4,6 +4,9 @@ import Util
 from discord.ext import commands
 
 class Fun(commands.Cog):
+	"""
+	Contains fun commands such as ban, kick, flip a coin, etc
+	"""
 	def __init__(self, client):
 		self.client = client
 	

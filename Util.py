@@ -32,6 +32,8 @@ loading_embed = discord.Embed(description="<a:bot_loading:809318632723185714> lo
 
 guild_ids = [740589508365385839]
 
+GUILD_ID = 740589508365385839
+
 def is_point_cmd_chnl():
     def predicate(ctx):
         return int(ctx.channel.id) == int(POINTCMD)

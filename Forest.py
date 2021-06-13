@@ -7,6 +7,9 @@ from discord.ext import commands
 from dpymenus import Page, PaginatedMenu
 
 class Forest(commands.Cog):
+	"""
+	Contains commands regarding Clinify Forest
+	"""
 	def __init__(self, client):
 		self.client = client
 	
