@@ -11,7 +11,7 @@ class Welcome(commands.Cog):
 		self.client = client
 		
 	async def welcomeEmbedReturner(self, target : discord.Member):
-		welcomeEmbed = discord.Embed(title = "Welcome to the Clinify Squad Discord Server!",
+		welcomeEmbed = discord.Embed(title = "Welcome to the BlueLearn Discord Server!",
 							description = "Make sure that you have a **verified email connected to your account** so that you can interact in the server. \nHere are a few things that you can do:",
 							colour = random.randint(0, 0xffffff),
 							url = 'https://www.clinify.in/')
@@ -23,7 +23,7 @@ class Welcome(commands.Cog):
 					inline=False)
 		welcomeEmbed.add_field(name="Getting to know you",
 					value="Please fill up this form so that we know your interests and can make the community better! **[Click here](https://forms.gle/5Zhums746RWRcAhu7)**")
-		welcomeEmbed.set_image(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1614530857/Clinify%20Stuff/Welcome_Banner.gif')
+		welcomeEmbed.set_image(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1624014516/Clinify%20Stuff/Bluelearn_welcome_banner_1.gif')
 		welcomeEmbed.set_author(name=target.name, icon_url=target.avatar_url)
 		return welcomeEmbed
 

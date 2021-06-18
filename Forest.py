@@ -13,12 +13,12 @@ class Forest(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 	
-	@commands.command(name = 'forest_leaderboard', aliases = ['flb', 'forest_lb', 'cflb'], help = "Fetches top 10 users from Clinify Forest Leaderboard.")
+	@commands.command(name = 'forest_leaderboard', aliases = ['flb', 'forest_lb', 'cflb', 'bflb'], help = "Fetches top 10 users from Clinify Forest Leaderboard.")
 	async def forest_leaderboard(self, ctx):
 		msg = await ctx.send(embed = Util.loading_embed)
-		LbEmbed = discord.Embed(title = "Clinify Forest Leaderboard",
-							description = """Following are the top 15 users on Clinify Forest Leaderboard.
-							For more users, go to the **[Clinify Forest Leaderboard Website](https://clinifyforest.herokuapp.com/leaderboard)**""",
+		LbEmbed = discord.Embed(title = "Blue Forest Leaderboard",
+							description = """Following are the top 15 users on Blue Forest Leaderboard.
+							For more users, go to the **[Blue Forest Leaderboard Website](https://clinifyforest.herokuapp.com/leaderboard)**""",
 							colour = random.randint(0, 0xffffff))
 		response = requests.get("https://clinifyforest.herokuapp.com/clinifyforest/api/getlb/15")
 		Rank = 1
@@ -32,15 +32,15 @@ class Forest(commands.Cog):
 	async def cflbError(self, ctx, error):
 		await Util.ErrorHandler(ctx, error)
 	
-	@commands.command(name = 'forest_user', aliases = ['fuser', 'fprofile', 'cfuser'], help = "Fetches stats about the user from Clinify Forest.")
+	@commands.command(name = 'forest_user', aliases = ['fuser', 'fprofile', 'cfuser', 'bfuser'], help = "Fetches stats about the user from Clinify Forest.")
 	async def forest_user(self, ctx, TargetUser : discord.Member = None):
 		msg = await ctx.send(embed = Util.loading_embed)
 		if TargetUser == None:
 			TargetUser = ctx.author
 		response = requests.get("https://clinifyforest.herokuapp.com/clinifyforest/api/getuser/{}".format(TargetUser.id))
 		UserInfo = response.json()
-		UserEmbed = discord.Embed(title = "Clinify Forest User Info",
-								description = "The following is the Clinify Forest stats about <@!{}>:".format(UserInfo["id"]),
+		UserEmbed = discord.Embed(title = "Blue Forest User Info",
+								description = "The following is the Blue Forest stats about <@!{}>:".format(UserInfo["id"]),
 								colour = random.randint(0, 0xffffff))
 		if UserInfo["avatar"] == None:
 			UserEmbed.set_thumbnail(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1619698559/SleepBot/Clinify%20Forest/Default.png")
