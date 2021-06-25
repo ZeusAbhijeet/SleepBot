@@ -14,7 +14,7 @@ class Welcome(commands.Cog):
 		welcomeEmbed = discord.Embed(title = "Welcome to the BlueLearn Discord Server!",
 							description = "Make sure that you have a **verified email connected to your account** so that you can interact in the server. \nHere are a few things that you can do:",
 							colour = random.randint(0, 0xffffff),
-							url = 'https://www.clinify.in/')
+							url = 'https://www.bluelearn.in/')
 		welcomeEmbed.add_field(name="Read the Rules", 
 					value="Read the rules from the <#752804052278050817> channel and react to the rule message with the 📝 emoji.",
 					inline=False)

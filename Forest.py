@@ -8,12 +8,12 @@ from dpymenus import Page, PaginatedMenu
 
 class Forest(commands.Cog):
 	"""
-	Contains commands regarding Clinify Forest
+	Contains commands regarding Blue Forest
 	"""
 	def __init__(self, client):
 		self.client = client
 	
-	@commands.command(name = 'forest_leaderboard', aliases = ['flb', 'forest_lb', 'cflb', 'bflb'], help = "Fetches top 10 users from Clinify Forest Leaderboard.")
+	@commands.command(name = 'forest_leaderboard', aliases = ['flb', 'forest_lb', 'cflb', 'bflb'], help = "Fetches top 10 users from Blue Forest Leaderboard.")
 	async def forest_leaderboard(self, ctx):
 		msg = await ctx.send(embed = Util.loading_embed)
 		LbEmbed = discord.Embed(title = "Blue Forest Leaderboard",
@@ -32,7 +32,7 @@ class Forest(commands.Cog):
 	async def cflbError(self, ctx, error):
 		await Util.ErrorHandler(ctx, error)
 	
-	@commands.command(name = 'forest_user', aliases = ['fuser', 'fprofile', 'cfuser', 'bfuser'], help = "Fetches stats about the user from Clinify Forest.")
+	@commands.command(name = 'forest_user', aliases = ['fuser', 'fprofile', 'cfuser', 'bfuser'], help = "Fetches stats about the user from Blue Forest.")
 	async def forest_user(self, ctx, TargetUser : discord.Member = None):
 		msg = await ctx.send(embed = Util.loading_embed)
 		if TargetUser == None:

@@ -136,7 +136,7 @@ print("Hello World!")
 	@cog_ext.cog_slash(name='about', description="Gives info about SleepBot")
 	async def _about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
-			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
+			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for [Bluelearn.in](https://www.bluelearn.in/) Discord Server. It is written in Python and uses discord.py library.", 
 			colour = random.randint(0, 0xffffff))
 		aboutEmbed.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607093923/SleepBot/Info%20Commands/SleepBot_Image.png')
 		aboutEmbed.add_field(name="Contributors!",
@@ -158,7 +158,7 @@ print("Hello World!")
 	@commands.command(name='about', help='About the bot!')
 	async def about(self, ctx):
 		aboutEmbed = discord.Embed(title = "About SleepBot",
-			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for Clinify.in Discord Server. It is written in Python and uses discord.py library.", 
+			description="SleepBot is a custom coded and open source bot made by [ZeusAbhijeet](https://github.com/ZeusAbhijeet/) for [Bluelearn.in](https://www.bluelearn.in/) Discord Server. It is written in Python and uses discord.py library.", 
 			colour = random.randint(0, 0xffffff))
 		aboutEmbed.set_thumbnail(url='https://res.cloudinary.com/zeusabhijeet/image/upload/v1607093923/SleepBot/Info%20Commands/SleepBot_Image.png')
 		aboutEmbed.add_field(name="Contributors!",

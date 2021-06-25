@@ -6,7 +6,7 @@ from discord.ext import commands
 
 class Announcements(commands.Cog):
 	"""
-	Contains commands for making annoucements for Clinify Originals
+	Contains commands for making annoucements for BlueLearn Originals
 	"""
 	def __init__(self, client):
 		self.client = client
