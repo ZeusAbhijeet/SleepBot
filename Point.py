@@ -91,6 +91,19 @@ class Point(commands.Cog):
 			await ctx.send("Points command can only be used in <#{}> channel!".format(Util.POINTCMD))
 		else:
 			await Util.ErrorHandler(ctx, error)
+	
+	@commands.Cog.listener()
+	async def on_message(self, ctx):
+		if not Util.is_point_chnl(ctx):
+			return
+		member = await ctx.guild.fetch_member(ctx.author.id)
+		if random.randint(0,200) == 0:
+			emoji = '<:CharGoWhaaa:757906750946017280>'
+			await ctx.add_reaction(emoji)
+			if ctx.author.id in Util.POINT:
+				Util.POINT[ctx.author.id] += 10
+			else:
+				Util.POINT[ctx.author.id] = 10
 
 def setup(client):
 	client.add_cog(Point(client))

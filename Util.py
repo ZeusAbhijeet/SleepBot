@@ -24,6 +24,8 @@ c.execute("SELECT channel_ID FROM channel_table WHERE title='POINT';")
 POINTCMD = c.fetchone()
 c.execute("SELECT channel_ID FROM channel_table WHERE title='RULE';")
 RULE_CHNL = c.fetchone()
+c.execute("SELECT channel_ID FROM channel_table WHERE title='POINT-EARN-CHANNEL';")
+POINT_EARN_CHNLS = c.fetchall()
 
 POINTCMD = int(POINTCMD[0])
 RULE_CHNL = int(RULE_CHNL[0])
@@ -42,6 +44,11 @@ def is_point_cmd_chnl():
 def is_rule_chnl(ctx):
 	return int(ctx.channel_id) == int(RULE_CHNL)
 
+def is_point_chnl(ctx):
+	for channel in POINT_EARN_CHNLS:
+		if int(channel[0]) == int(ctx.channel.id):
+			return True
+	return False
 
 conn.close()
 
