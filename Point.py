@@ -98,12 +98,12 @@ class Point(commands.Cog):
 			return
 		member = await ctx.guild.fetch_member(ctx.author.id)
 		if random.randint(0,200) == 0:
-			emoji = '<:CharGoWhaaa:757906750946017280>'
+			emoji = '🎖'
 			await ctx.add_reaction(emoji)
 			if ctx.author.id in Util.POINT:
-				Util.POINT[ctx.author.id] += 10
+				Util.POINT[ctx.author.id] += 5
 			else:
-				Util.POINT[ctx.author.id] = 10
+				Util.POINT[ctx.author.id] = 5
 
 def setup(client):
 	client.add_cog(Point(client))
