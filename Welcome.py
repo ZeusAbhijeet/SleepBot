@@ -16,7 +16,7 @@ class Welcome(commands.Cog):
 							colour = random.randint(0, 0xffffff),
 							url = 'https://www.bluelearn.in/')
 		welcomeEmbed.add_field(name="Read the Rules", 
-					value="Read the rules from the <#752804052278050817> channel and react to the rule message with the 📝 emoji.",
+					value="Read the rules from the <#752804052278050817> channel carefully.",
 					inline=False)
 		welcomeEmbed.add_field(name="Check out the Server Tutorial Video", 
 					value="If you are new to discord, you can watch a tutorial video which will help you to go about the server.\n**Tutorial:** [Click here](https://youtu.be/AUimFYOBXYU?t=291)",
