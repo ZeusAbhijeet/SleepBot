@@ -20,7 +20,7 @@ class Forest(commands.Cog):
 							description = """Following are the top 15 users on Blue Forest Leaderboard.
 							For more users, go to the **[Blue Forest Leaderboard Website](https://clinifyforest.herokuapp.com/leaderboard)**""",
 							colour = random.randint(0, 0xffffff))
-		response = requests.get("https://clinifyforest.herokuapp.com/clinifyforest/api/getlb/15")
+		response = requests.get("https://clinifyforest.herokuapp.com/api/getlb/15")
 		Rank = 1
 		for i in response.json():
 			LbEmbed.add_field(name = "{}. {}".format(Rank, i["discord_tag"]),

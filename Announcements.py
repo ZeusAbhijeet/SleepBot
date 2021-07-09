@@ -20,7 +20,7 @@ class Announcements(commands.Cog):
 		if PodcastPoster != None:
 			podcastEmbed.set_image(url=PodcastPoster)
 		else:
-			podcastEmbed.set_image(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1619981168/SleepBot/Announcements/Clinify-Originals-Poster.jpg")
+			podcastEmbed.set_image(url="https://res.cloudinary.com/zeusabhijeet/image/upload/v1625818327/SleepBot/Announcements/Bluelearn_Originals_Poster.png")
 		return podcastEmbed
 	
 	@commands.command(name = "announceYashvi")
