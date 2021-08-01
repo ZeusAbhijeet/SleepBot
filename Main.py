@@ -37,7 +37,7 @@ async def on_ready():
 	await client.change_presence(activity=discord.Game(name="#BlueLearn"))
 
 if __name__ == '__main__':
-	extensions = {'Info', 'Point', 'Fun', 'Mod', 'Welcome', 'Rule', 'Study', 'Forest', 'Announcements'} 
+	extensions = {'Info', 'Point', 'Fun', 'Mod', 'Welcome', 'Rule', 'Study', 'Forest', 'Announcements', 'Photography'} 
 	for extension in extensions:
 		try:
 			client.load_extension(extension)

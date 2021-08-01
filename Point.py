@@ -96,6 +96,8 @@ class Point(commands.Cog):
 	async def on_message(self, ctx):
 		if not Util.is_point_chnl(ctx):
 			return
+		if ctx.author.bot:
+			return
 		member = await ctx.guild.fetch_member(ctx.author.id)
 		if random.randint(0,200) == 0:
 			emoji = '🎖'
