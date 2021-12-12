@@ -1,3 +1,7 @@
+# Important
+
+This repo is now dead since I have switched SleepBot from discord.py to hikari-lightbulb. For the current up-to-date bot code, head over to https://github.com/ZeusAbhijeet/SleepBot-Hikari-Rewrite
+
 # BlueLearn's SleepBot
 
 Official Bot for the Bluelearn.in Discord Server written in Python using Discord.py
@@ -26,7 +30,7 @@ This bot requires Server Members Intent so make sure to enable that by going to 
 
 ## Contribution
 
-Pull Requests will no longer be accepted on this repository. To create a pull request, go to the following repo: https://github.com/Clinify-Open-Sauce/SleepBot. However, this repository will continue to be updated.
+Pull Requests will no longer be accepted on this repository. 
 
 ## Changelogs
 
